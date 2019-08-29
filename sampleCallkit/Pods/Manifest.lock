@@ -1,0 +1,28 @@
+PODS:
+  - EnxRTCiOS (1.4.0):
+    - GoogleWebRTC (= 1.1.27564)
+  - GoogleWebRTC (1.1.27564)
+  - Socket.IO-Client-Swift (12.0.0):
+    - StarscreamSocketIO (~> 8.0.7)
+  - StarscreamSocketIO (8.0.7)
+
+DEPENDENCIES:
+  - EnxRTCiOS
+  - Socket.IO-Client-Swift (~> 12.0.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - EnxRTCiOS
+    - GoogleWebRTC
+    - Socket.IO-Client-Swift
+    - StarscreamSocketIO
+
+SPEC CHECKSUMS:
+  EnxRTCiOS: 8f72f4838bd70ff34723841f08aefdbddad48422
+  GoogleWebRTC: fc33f469599b0c15eda73213696d2346c0ed1c4a
+  Socket.IO-Client-Swift: 5b0154b42b3892bfb4c44fa138cbeb8afec4f6ef
+  StarscreamSocketIO: 00b54e4208481ca5cef089545353aaf126bae16d
+
+PODFILE CHECKSUM: 77ace1b878c72e8be090b524a53cd40b696ad91c
+
+COCOAPODS: 1.7.4
