@@ -1,23 +1,26 @@
-**Callkit : A Sample iOS App with EnableX iOS Toolkit and Callkit**
+# A Sample iOS App with EnableX iOS Toolkit and Callkit 
 
-This iOS Sample App demonstrates how to integrate the CallKit (https://developer.apple.com/documentation/callkit) 
+This iOS Sample App, demonstrates how to integrate the CallKit (https://developer.apple.com/documentation/callkit) 
 with EnableX (https://www.enablex.io) platform using iOS Toolkit.
 
-**Note: CallKit features won’t work in the simulator, To run this code you’ll need an iPhone with iOS 12.0 or higher installed.**
+### Note: To try out this code, you’ll need an iPhone with iOS 12.0 or higher
+**Note: CallKit is not supported in Simulator* 
 
-**What is CallKit?**
-    CallKit is a framework that aims to improve the VoIP experience by allowing apps to integrate with the native phone UI. By adopting CallKit, your app will be able to
-        Use the native incoming call screen in both the locked and unlocked states.
-        
-**Use CocoaPods to install the project files and dependencies.**
+### What is CallKit?
+CallKit is a framework that aims to improve the VoIP experience by allowing applications to integrate with the native phone UI. 
+By adopting CallKit, your app will be able to Use the native incoming call screen in both the locked and unlocked states.
+
+## Installation and pre-requisites:
+
+### Use CocoaPods to install the project files and dependencies.
 
 1. Install CocoaPods as described in [CocoaPods Getting Started](https://guides.cocoapods.org/using/getting-started.html#getting-started).
 1.1 In Terminal, `cd` to your project directory and type `pod install`.
 1.2  Reopen your project in Xcode using the new `*.xcworkspace` file.
 
-**Configure and build the app**
+### Configure and build the app
 
-Configure the sample app code. Then, build and run the app.
+Configure the sample app code, Then, build and run the app.
 
 2. The application **requires** values for **RoomId**.
         1.1 Replace the following empty strings with the corresponding **room_Id** values in `AppDelegate.swift`:
@@ -26,14 +29,13 @@ Configure the sample app code. Then, build and run the app.
                         ```
 3. Use Xcode to build and run the app on an iOS simulator or device.
 
-# Exploring the sample app
+### Exploring the sample app
 
 4 **Call Triger**: 
 
 ![home](./home.png)
 
 The iOS system boosts the call priority of the app. Then, the app starts publishing to EnableX platform. You will not notice any differences until you go to the home screen.
- To verify:
   - An incoming native phone call will not interrupt the current VoIP call, instead it shows the option menu.
   - App will show native incoming call UI to answer the call.
  
@@ -52,7 +54,7 @@ The iOS system boosts the call priority of the app. Then, the app starts publish
 
    ** use a push server or [NWPusher](https://github.com/noodlewerk/NWPusher) to call**
 
-This requires a few more steps to test:
+This requires a few more steps:
 
     - create your certificate
     - configure your push notification backend or NWPusher
@@ -160,7 +162,7 @@ let action = "startCall"
 
 ```
 
-As for answering a call, the `CallKit` framework provides a convenient API to present a native calling UI. By invoking `reportNewIncomingCall(with:update:completion:)` on the provider, you will have the same experience as receiving a native phone call. Often, this piece of code works with VoIP remote notification to make calls to a device/person same like native call UI experience.
+As for answering a call, the `CallKit` framework provides a convenient API to present a native call UI. By invoking `reportNewIncomingCall(with:update:completion:)` on the provider, you will have the same experience as receiving a native phone call. Often, this piece of code works with VoIP remote notification to make calls to a device/person same like native call UI experience.
 
 ```swift
 // Construct a CXCallUpdate describing the incoming call, including the caller.
