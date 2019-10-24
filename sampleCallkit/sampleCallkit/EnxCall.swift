@@ -132,11 +132,11 @@ class EnxCall: NSObject {
                 //  Success Response from server
                     let videoSize : NSDictionary =  ["minWidth" : 720 , "minHeight" : 480 , "maxWidth" : 1280, "maxHeight" :720]
                 let roomInfo : [String : Any] = ["allow_reconnect" :true , "number_of_attempts" :  3 ,"timeout_interval" : 20, "audio_only" : true]
-                    let localStreamInfo : NSDictionary = ["video" : false ,"audio" : true  ,"data" :true ,"name" :"Jay","type" : "public" ,"maxVideoBW" : 400 ,"minVideoBW" : 300 , "videoSize" : videoSize]
-                guard let steam = self.objectJoin.joinRoom(token, delegate: self, publishStreamInfo: (localStreamInfo as! [AnyHashable : Any]), reconnectInfo: roomInfo, advanceOptions: nil) else{
-                        return
-                    }
-                    self.localStream = steam
+                    let localStreamInfo : NSDictionary = ["video" : false ,"audio" : true  ,"data" :true ,"name" :"EnxCall","type" : "public" ,"maxVideoBW" : 400 ,"minVideoBW" : 300 , "videoSize" : videoSize]
+                guard let stream = self.objectJoin.joinRoom(token, delegate: self, publishStreamInfo: (localStreamInfo as! [AnyHashable : Any]), roomInfo: (roomInfo as [AnyHashable : Any]), advanceOptions: nil) else{
+                    return
+                }
+                self.localStream = stream
                 self.localStream.delegate = self as EnxStreamDelegate
             }
         })
