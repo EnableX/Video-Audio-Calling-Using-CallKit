@@ -7,8 +7,9 @@
 /// Updates the original SDP description to instead prefer the specified video
 /// codec. We do this by placing the specified codec at the beginning of the
 /// codec list if it exists in the sdp.
-+ (RTCSessionDescription *)descriptionForDescription:(RTCSessionDescription *)description
-                                 preferredVideoCodec:(NSString *)codec;
+//+ (RTCSessionDescription *)descriptionForDescription:(RTCSessionDescription *)description preferredVideoCodec:(NSString *)codec;
++ (RTCSessionDescription *)descriptionForDescription:(RTCSessionDescription *)description preferredVideoCodec:(NSString *)codec forStreamID:(NSString *)streamID withBandWidth:(int)bandWidth;
+
 
 /// Appends an SDP line after a regex matching existing line.
 + (RTCSessionDescription *)descriptionForDescription:(RTCSessionDescription *)description

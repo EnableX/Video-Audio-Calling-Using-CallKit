@@ -23,7 +23,7 @@
 //  THE SOFTWARE.
 
 import Foundation
-import Starscream
+import StarscreamSocketIO
 
 enum JSONError : Error {
     case notArray
@@ -38,11 +38,11 @@ extension Array {
 
 extension CharacterSet {
     static var allowedURLCharacterSet: CharacterSet {
-        return CharacterSet(charactersIn: "!*'();:@&=+$,/?%#[]\" {}^").inverted
+        return CharacterSet(charactersIn: "!*'();:@&=+$,/?%#[]\" {}").inverted
     }
 }
 
-extension Dictionary where Key == String, Value == Any {
+extension NSDictionary {
     private static func keyValueToSocketIOClientOption(key: String, value: Any) -> SocketIOClientOption? {
         switch (key, value) {
         case let ("connectParams", params as [String: Any]):
@@ -63,6 +63,8 @@ extension Dictionary where Key == String, Value == Any {
             return .log(log)
         case let ("logger", logger as SocketLogger):
             return .logger(logger)
+        case let ("nsp", nsp as String):
+            return .nsp(nsp)
         case let ("path", path as String):
             return .path(path)
         case let ("reconnects", reconnects as Bool):
@@ -71,10 +73,6 @@ extension Dictionary where Key == String, Value == Any {
             return .reconnectAttempts(attempts)
         case let ("reconnectWait", wait as Int):
             return .reconnectWait(wait)
-        case let ("reconnectWaitMax", wait as Int):
-            return .reconnectWaitMax(wait)
-        case let ("randomizationFactor", factor as Double):
-            return .randomizationFactor(factor)
         case let ("secure", secure as Bool):
             return .secure(secure)
         case let ("security", security as SSLSecurity):
@@ -94,7 +92,7 @@ extension Dictionary where Key == String, Value == Any {
         var options = [] as SocketIOClientConfiguration
 
         for (rawKey, value) in self {
-            if let opt = Dictionary.keyValueToSocketIOClientOption(key: rawKey, value: value) {
+            if let key = rawKey as? String, let opt = NSDictionary.keyValueToSocketIOClientOption(key: key, value: value) {
                 options.insert(opt)
             }
         }

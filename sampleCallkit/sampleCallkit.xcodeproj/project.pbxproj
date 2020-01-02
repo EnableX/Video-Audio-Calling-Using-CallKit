@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		16133B7956953356B54C56D9 /* Pods_sampleCallkitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 120D2B2AE1327AD8CC4F66F9 /* Pods_sampleCallkitUITests.framework */; };
-		27CEB507236079C4008A0DA3 /* EnxRTCiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CEB50523607689008A0DA3 /* EnxRTCiOS.framework */; };
-		27CEB508236079C4008A0DA3 /* EnxRTCiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27CEB50523607689008A0DA3 /* EnxRTCiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AD7B73E50E1DACE0F7D99694 /* Pods_sampleCallkitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8C8003ABD44D971BCD7D44 /* Pods_sampleCallkitTests.framework */; };
 		BD3F4D8A230C203A00F25013 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3F4D89230C203A00F25013 /* AppDelegate.swift */; };
 		BD3F4D8C230C203A00F25013 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3F4D8B230C203A00F25013 /* ViewController.swift */; };
@@ -44,25 +42,10 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		27CEB509236079C4008A0DA3 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				27CEB508236079C4008A0DA3 /* EnxRTCiOS.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		0F8C8003ABD44D971BCD7D44 /* Pods_sampleCallkitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sampleCallkitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		120D2B2AE1327AD8CC4F66F9 /* Pods_sampleCallkitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sampleCallkitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		185D523224D8E8A1A98CB064 /* Pods-sampleCallkit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sampleCallkit.debug.xcconfig"; path = "Target Support Files/Pods-sampleCallkit/Pods-sampleCallkit.debug.xcconfig"; sourceTree = "<group>"; };
-		27CEB50523607689008A0DA3 /* EnxRTCiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EnxRTCiOS.framework; sourceTree = "<group>"; };
 		4C0F45898A78EBD882CE5B88 /* Pods_sampleCallkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sampleCallkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53300CC473C02BC97A6DC67E /* Pods-sampleCallkitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sampleCallkitUITests.debug.xcconfig"; path = "Target Support Files/Pods-sampleCallkitUITests/Pods-sampleCallkitUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		62CA273C084BBDA78E8A5323 /* Pods-sampleCallkitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sampleCallkitTests.debug.xcconfig"; path = "Target Support Files/Pods-sampleCallkitTests/Pods-sampleCallkitTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -97,7 +80,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27CEB507236079C4008A0DA3 /* EnxRTCiOS.framework in Frameworks */,
 				BD8833E10AEA6E83A9E719DC /* Pods_sampleCallkit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,7 +138,6 @@
 		BD3F4D88230C203A00F25013 /* sampleCallkit */ = {
 			isa = PBXGroup;
 			children = (
-				27CEB50523607689008A0DA3 /* EnxRTCiOS.framework */,
 				BD3F4DD5230FB5A600F25013 /* resource.bundle */,
 				BD3F4DC5230D1D8E00F25013 /* callTone.caf */,
 				BD3F4D89230C203A00F25013 /* AppDelegate.swift */,
@@ -218,7 +199,6 @@
 				BD3F4D83230C203A00F25013 /* Frameworks */,
 				BD3F4D84230C203A00F25013 /* Resources */,
 				C6FEC3AA12F8F425BD9992B3 /* [CP] Embed Pods Frameworks */,
-				27CEB509236079C4008A0DA3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -617,13 +597,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = sampleCallkit/sampleCallkit.entitlements;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BH56368Y47;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/sampleCallkit",
-				);
 				INFOPLIST_FILE = sampleCallkit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -632,7 +609,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.enx.callKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = CallKit;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -644,13 +621,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = sampleCallkit/sampleCallkit.entitlements;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BH56368Y47;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/sampleCallkit",
-				);
 				INFOPLIST_FILE = sampleCallkit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -659,7 +633,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.enx.callKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = CallKit;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

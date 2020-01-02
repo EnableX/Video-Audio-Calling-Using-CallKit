@@ -76,7 +76,7 @@
 #define kswitchedNetwork                    @"NetworkChange"
 #define kmaxVideoDeny                       @"MaxVideoDeny"
 
-
+#define kFrameRate                          @"framerate"
 //#define kMinWidthResolution (1280)
 //#define kMaxWidthResolution (1280)
 //#define kMinHeightResolution (720)
@@ -198,7 +198,14 @@
 #define kSubscribedStats                                     @"subscribedStats"
 #define kStopSubscribeStatsinProgress                        @"StopsubsubscribeStatsInProgress"
 
+/*** Reconnect State ***/
+#define kReconnect                                           @"reconnect"
+#define kReconnectInProgress                                 @"reconnectInProgress"
 
+
+/*** Reconnect State ***/
+#define kCaptchaOn                                           @"startcaptcha"
+#define kCaptchaOff                                           @"stopcaptcha"
 
 #endif /* EnxContants_h */
 

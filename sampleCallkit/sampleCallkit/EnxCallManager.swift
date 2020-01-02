@@ -37,8 +37,50 @@ class EnxCallManager: NSObject {
             if let error = error {
                 print("Error requesting transaction: \(error)")
             } else {
+                if(action == "startCall"){
+                    self.pushCalltoDevice()
+                }
+                else if(action == "endCall"){
+                    self.pushEndCallNotification()
+                }
                 print("Requested transaction \(action) successfully")
             }
+        }
+    }
+    //Mark push message for Start call
+    fileprivate func pushCalltoDevice(){
+        let bundleurl  = Bundle.main.url(forResource: "push", withExtension: "p12", subdirectory: "resource.bundle")
+        let data = NSData(contentsOf: bundleurl!)
+        do{
+            let pusher = try NWPusher.connect(withPKCS12Data: data as Data?, password: "enablex201301", environment: .sandbox)
+            //5BEDD42D9CE7F258E1F72C1B042062CDCB84D12C31AFE1D0E58DB197AF2C7197  -- My phone
+            let payload = "{\"aps\":{\"UUID\":\"\(UUID())\",\"handle\":\"start call\"}}"
+            let token = "A022E64D8DE7D72447BAFB53AD37190B0A5DD9C89B1859502D2B29742D201367"
+            do {
+                try pusher.pushPayload(payload, token: token, identifier: UInt(arc4random()))
+            } catch{
+                print(error)
+            }
+        }catch{
+            print(error)
+        }
+    }
+    //Mark push message for End call
+    fileprivate func pushEndCallNotification(){
+        let bundleurl  = Bundle.main.url(forResource: "push", withExtension: "p12", subdirectory: "resource.bundle")
+        let data = NSData(contentsOf: bundleurl!)
+        do{
+            let pusher = try NWPusher.connect(withPKCS12Data: data as Data?, password: "enablex201301", environment: .sandbox)
+            //A022E64D8DE7D72447BAFB53AD37190B0A5DD9C89B1859502D2B29742D201367  -- office phone
+            let payload = "{\"aps\":{\"UUID\":\"\(UUID())\",\"handle\":\"end call\"}}"
+            let token = "A022E64D8DE7D72447BAFB53AD37190B0A5DD9C89B1859502D2B29742D201367"
+            do {
+                try pusher.pushPayload(payload, token: token, identifier: UInt(arc4random()))
+            } catch{
+                print(error)
+            }
+        }catch{
+            print(error)
         }
     }
     //Mark : Call Managment

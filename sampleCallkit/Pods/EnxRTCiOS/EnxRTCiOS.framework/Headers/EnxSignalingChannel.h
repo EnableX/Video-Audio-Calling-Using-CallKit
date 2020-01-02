@@ -91,7 +91,7 @@ readyToSubscribeStreamId:(NSString *)streamId
  @param channel EnxSignalingChannel the channel that emit the message.
  @param Data  reconnected room meta data.
  **/
-- (void)signalingChannel:(EnxSignalingChannel *)channel didRoomConnected:(NSArray *)Data;
+- (void)signalingChannel:(EnxSignalingChannel *)channel didConnect:(NSArray *)Data;
 /**
  This event is fired when a token was not successfuly used.
  @param channel EnxSignalingChannel the channel that emit the message.
@@ -130,7 +130,7 @@ readyToSubscribeStreamId:(NSString *)streamId
  @param channel EnxSignalingChannel the channel that emit the message.
  @param roomMeta Metadata associated to the room that the client just connect.
  */
-- (void)signalingChannel:(EnxSignalingChannel *)channel didDisconnectOfRoom:(NSDictionary *)roomMeta;
+- (void)signalingChannel:(EnxSignalingChannel *)channel roomDidDisconnected:(NSDictionary *)roomMeta;
 
 /**
  Event fired when a new stream id has been created and server is ready
@@ -222,8 +222,9 @@ to start subscribing it. */
  @param peerSocketId String that identifies the peer connection for the stream.
 
  */
-- (void)signalingChannel:(EnxSignalingChannel *)channel didRequestPublishP2PStreamWithId:(NSString *)streamId
-                                                                        peerSocketId:(NSString *)peerSocketId;
+//Now Not in used
+//- (void)signalingChannel:(EnxSignalingChannel *)channel didRequestPublishP2PStreamWithId:(NSString *)streamId
+//                                                                        peerSocketId:(NSString *)peerSocketId;
 
 /**
  Method called when the signaling channels needs a new client to operate a connection.
@@ -232,7 +233,7 @@ to start subscribing it. */
 
  @returns EnxClientDelegate instance.
  */
-- (id<EnxSignalingChannelDelegate>)clientDelegateRequiredForSignalingChannel:(EnxSignalingChannel *)channel;
+- (id<EnxSignalingChannelDelegate>)clientDelegateRequiredForSignalingChannel:(EnxSignalingChannel *)channel forStream:(NSString *)streamID;
 
 /**
  Event fired when data stream received.
@@ -310,8 +311,8 @@ to start subscribing it. */
 //For Participant
 - (void)signalingChannel:(EnxSignalingChannel *)channel didReciveFloorRequest:(NSArray *)Data;
 - (void)signalingChannel:(EnxSignalingChannel *)channel didReciveFloorGranted:(NSArray *)Data;
-- (void)signalingChannel:(EnxSignalingChannel *)channel didFloorReleased:(NSArray *)Data;
-- (void)signalingChannel:(EnxSignalingChannel *)channel didFloorDeny:(NSArray *)Data;
+- (void)signalingChannel:(EnxSignalingChannel *)channel didReleaseFloorRequested:(NSArray *)Data;
+- (void)signalingChannel:(EnxSignalingChannel *)channel didDenyFloorRequested:(NSArray *)Data;
 //For Moserator
 - (void)signalingChannel:(EnxSignalingChannel *)channel didFloorRequested:(NSArray *)Data;
 - (void)signalingChannel:(EnxSignalingChannel *)channel didProcessFloorRequest:(NSArray *)Data;
@@ -367,9 +368,21 @@ to start subscribing it. */
 -(void)signalingReciveStastData:(NSArray *)statsData;
 
 #pragma mark- Advance Options Degegate
-- (void)signalingChannel:(EnxSignalingChannel *_Nullable)channel didAdvanceOptionsUpdate:(NSArray *_Nullable)data;
+- (void)signalingChannel:(EnxSignalingChannel *_Nullable)channel didAcknowledgementAdvanceOption:(NSArray *_Nullable)data;
+
+- (void)signalingChannel:(EnxSignalingChannel *_Nullable)channel didGenericEvents:(NSArray *_Nullable)data;
+
 
 - (void)signalingChannel:(EnxSignalingChannel *_Nullable)channel didGetAdvanceOptions:(NSArray *_Nullable)data;
+
+#pragma mark- Switch user role Degegate
+- (void)signalingChannel:(EnxSignalingChannel *_Nullable)channel didSwitchUserRole:(NSArray *_Nullable)data;
+
+- (void)signalingChannel:(EnxSignalingChannel *_Nullable)channel didUserRoleChanged:(NSArray *_Nullable)data;
+
+#pragma mark- Send Data Delegate
+- (void)signalingChannel:(EnxSignalingChannel *_Nullable)channel didAcknowledgSendData:(NSArray *_Nullable)data;
+
 
 @end
 
@@ -403,7 +416,7 @@ to start subscribing it. */
 /// EnxSignalingChannelRoomDelegate reference
 @property (weak, nonatomic) id<EnxSignalingChannelRoomDelegate> roomDelegate;
 @property(nonatomic) int reconnectAttamped;
-
+@property (nonatomic,copy,readonly) NSString *roomSigMediaConfiguration;
 
 ///-----------------------------------
 /// @name Public Methods
@@ -477,5 +490,8 @@ signalingChannelDelegate:(id<EnxSignalingChannelDelegate>)delegate;
 -(void)setAdvanceOptions:(NSArray *_Nullable)advanceOptions;
 
 -(void)getSignallingAdvanceOptions;
+
+// To Switch user role.
+-(void)switchUserRole:(NSString *)clientId;
 
 @end

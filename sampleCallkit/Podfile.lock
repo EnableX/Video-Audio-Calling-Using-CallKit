@@ -1,29 +1,32 @@
 PODS:
+  - EnxRTCiOS (1.5.3):
+    - GoogleWebRTC (= 1.1.29229)
   - GoogleWebRTC (1.1.29229)
   - NWPusher (0.7.5)
-  - Socket.IO-Client-Swift (15.0.0):
-    - Starscream (~> 3.1)
-  - Starscream (3.1.1)
+  - Socket.IO-Client-Swift (12.0.0):
+    - StarscreamSocketIO (~> 8.0.7)
+  - StarscreamSocketIO (8.0.7)
 
 DEPENDENCIES:
-  - GoogleWebRTC (= 1.1.29229)
+  - EnxRTCiOS
   - NWPusher (~> 0.7.0)
-  - Socket.IO-Client-Swift (~> 15.0.0)
+  - Socket.IO-Client-Swift (~> 12.0.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - NWPusher
   trunk:
+    - EnxRTCiOS
     - GoogleWebRTC
+    - NWPusher
     - Socket.IO-Client-Swift
-    - Starscream
+    - StarscreamSocketIO
 
 SPEC CHECKSUMS:
+  EnxRTCiOS: f156a3106628eec03c33ab453ee2b02efd660a14
   GoogleWebRTC: ffbf2dca3bdef0fbeebcff497e0a659bd69761c8
   NWPusher: 9b29a44754d88cb02c28a1e9bc8750845506123e
-  Socket.IO-Client-Swift: c039a808195d22a7192962841b8c035cb61ea49e
-  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
+  Socket.IO-Client-Swift: 5b0154b42b3892bfb4c44fa138cbeb8afec4f6ef
+  StarscreamSocketIO: 00b54e4208481ca5cef089545353aaf126bae16d
 
-PODFILE CHECKSUM: 3b03b95d0f77d77a1172884cdfa7e57845afab2f
+PODFILE CHECKSUM: 687e576c9da0861811a44ad4fd17c25f18e01e3a
 
 COCOAPODS: 1.8.4

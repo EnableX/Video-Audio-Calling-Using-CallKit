@@ -16,6 +16,6 @@
  @return EnxRoom object
  */
 
--(EnxStream *_Nullable)joinRoom:(NSString *_Nonnull)token delegate:(id _Nonnull )delegate PublishStreamInfo:(NSDictionary *_Nonnull)publishStreamInfo reconnectInfo:(NSDictionary * _Nullable)reconnectInfo advanceOptions:(NSArray *_Nullable)advanceOption;
+-(EnxStream *_Nullable)joinRoom:(NSString *_Nonnull)token delegate:(id _Nonnull )delegate PublishStreamInfo:(NSDictionary *_Nonnull)publishStreamInfo roomInfo:(NSDictionary * _Nullable)roomInfo advanceOptions:(NSArray *_Nullable)advanceOption;
 @end
 

@@ -6,8 +6,8 @@ target 'sampleCallkit' do
   use_frameworks!
 
   # Pods for sampleCallkit
-  pod 'GoogleWebRTC', '1.1.29229'
-  pod 'Socket.IO-Client-Swift', '~> 15.0.0'
+ 	pod 'EnxRTCiOS'
+ 	pod 'Socket.IO-Client-Swift', '~> 12.0.0'
   #pod 'Firebase/Messaging'
   # pod 'Firebase/Analytics'
   pod 'NWPusher', '~> 0.7.0'

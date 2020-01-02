@@ -44,12 +44,13 @@ class ViewController: UIViewController {
         }
         if trigerCallBtn.titleLabel?.text == "Call Triger"{
             
-            appdel.callManager.startCall(handle: "Call To Me")
+            appdel.callManager.startCall(handle: "Jay Kumar")
             trigerCallBtn.setTitle("End Call", for: .normal)
             trigerCallBtn.setTitleColor(.red, for: .normal)
         }
         else{
             endCall()
+            //pushEndCallNotification()
             trigerCallBtn.setTitle("Call Triger", for: .normal)
             trigerCallBtn.setTitleColor(.black, for: .normal)
         }

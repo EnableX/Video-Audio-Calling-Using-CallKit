@@ -4,7 +4,7 @@
 #import "EnxSignalingChannel.h"
 #import "EnxClientDelegate.h"
 #import "EnxClientState.h"
-
+#import "EnxRoom.h"
 
 typedef RTCSessionDescription * (^SDPHackCallback)(RTCSessionDescription *description);
 
@@ -22,6 +22,7 @@ static NSString *preferredVideoCodec;
 extern NSString* clientStateToString(EnxClientState state);
 
 @class EnxClient;
+@class EnxRoom;
 
 ///-----------------------------------
 /// @name EnxClient Interface
@@ -32,11 +33,11 @@ extern NSString* clientStateToString(EnxClientState state);
 ///-----------------------------------
 /// @name Properties
 ///-----------------------------------
-
+@property(weak,nonatomic)EnxRoom *enxRoom;
 /// EnxClientDelegate instance.
 @property (weak, nonatomic) id<EnxClientDelegate> delegate;
 /// Local Stream assigned to this client.
-@property (strong, nonatomic) RTCMediaStream *localStream;
+//@property (weak, nonatomic) RTCMediaStream *localStream;
 /// Max bitrate allowed for this client to use.
 @property NSNumber *maxBitrate;
 /// Should bitrate be limited to `maxBitrate` value?
@@ -46,21 +47,19 @@ extern NSString* clientStateToString(EnxClientState state);
 /// The streamId
 @property NSString *streamId;
 @property (nonatomic,readonly) int maxNumberOfLayers;
+@property (nonatomic,readonly) int maxbandWidth;
 
 ///-----------------------------------
 /// @name Initializers
 ///-----------------------------------
 
-- (instancetype)initWithDelegate:(id<EnxClientDelegate>)delegate;
-- (instancetype)initWithDelegate:(id<EnxClientDelegate>)delegate
-                  andPeerFactory:(RTCPeerConnectionFactory *)peerFactory maxVideoLayers:(int)layer;
-- (instancetype)initWithDelegate:(id<EnxClientDelegate>)delegate
-                     peerFactory:(RTCPeerConnectionFactory *)peerFactory
-                    peerSocketId:(NSString *)peerSocketId;
-- (instancetype)initWithDelegate:(id<EnxClientDelegate>)delegate
-                     peerFactory:(RTCPeerConnectionFactory *)peerFactory
-                        streamId:(NSString *)streamId
-                    peerSocketId:(NSString *)peerSocketId;
+//- (instancetype)initWithDelegate:(id<EnxClientDelegate>)delegate;
+// for Publisger Stream
+- (instancetype)initPublishClientWithDelegate:(id<EnxClientDelegate>)delegate withEnxRoom:(EnxRoom *)room withMaxVideoLayers:(int)layer withMaxBandWidth:(int)bandWidth isAudioOnly:(BOOL)isAudioOnly ;
+
+// for Subscriber Stream
+-(instancetype)initSubscriberClientWithDelegate:(id<EnxClientDelegate>)delegate withEnxRoom:(EnxRoom *)room;
+
 ///-----------------------------------
 /// @name Instance Methods
 ///-----------------------------------

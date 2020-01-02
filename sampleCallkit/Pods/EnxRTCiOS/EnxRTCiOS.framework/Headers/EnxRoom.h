@@ -16,7 +16,11 @@ typedef NS_ENUM(NSInteger, EnxRoomStatus) {
     EnxRoomStatusDisconnected,
     EnxRoomStatusError
 };
-
+typedef NS_ENUM(NSUInteger, EnxFilePosition) {
+  Top,
+  Center,
+  Bottom
+};
 /**
  @enum EnxRoomErrorStatus
  */
@@ -65,6 +69,7 @@ typedef NS_ENUM(NSInteger, EnxRoomStatus) {
  @param room Instance of the room where event happen.
  @param stream EnxStream being published.
  
+ 
  */
 - (void)room:(EnxRoom *_Nullable)room didPublishStream:(EnxStream *_Nullable)stream;
 
@@ -75,6 +80,7 @@ typedef NS_ENUM(NSInteger, EnxRoomStatus) {
  the object be deallocated.
  
  @param stream The stream being unpublished.
+ 
  */
 - (void)room:(EnxRoom *_Nullable)room didUnpublishStream:(EnxStream *_Nullable)stream;
 
@@ -162,6 +168,8 @@ typedef NS_ENUM(NSInteger, EnxRoomStatus) {
 // called when error on event failure like publish, subscribe etc
 - (void)room:(EnxRoom *_Nullable)room didEventError:(NSArray *_Nullable)reason;
 
+// called pass info related to any event if required.
+- (void)room:(EnxRoom *_Nullable)room didEventInfo:(NSDictionary *_Nullable)infoData;
 
 - (void)room:(EnxRoom *_Nullable)room didReconnect:(NSString *_Nullable)reason;
 
@@ -219,6 +227,7 @@ typedef NS_ENUM(NSInteger, EnxRoomStatus) {
 
 //On Logs uploaded failure
 //-(void)logsUploadedFailure:(NSString *)message;
+
 
 -(void)didLogUpload:(NSArray *_Nullable)data;
 
@@ -356,7 +365,7 @@ typedef NS_ENUM(NSInteger, EnxRoomStatus) {
  There would be listener for paricipant when hardunmute used by moderator. For this delegates are:
 
  */
-- (void)didHardMuteRecived:(NSArray *_Nullable)Data;
+- (void)didHardMuteReceived:(NSArray *_Nullable)Data;
 
 
 /**
@@ -364,7 +373,7 @@ typedef NS_ENUM(NSInteger, EnxRoomStatus) {
  There would be listener for paricipant when hardunmute used by moderator. For this delegates are:
  
  */
-- (void)didHardunMuteRecived:(NSArray *_Nullable)Data;
+- (void)didHardunMuteReceived:(NSArray *_Nullable)Data;
 
 
 /**
@@ -601,17 +610,79 @@ typedef NS_ENUM(NSInteger, EnxRoomStatus) {
 /*
  This delegate method called to receive message at room Level.
  */
+- (void)room:(EnxRoom *_Nonnull)room didMessageReceived:(NSArray *_Nullable)data;
+
+/*
+ This delegate method called to receive custom signaling event message at room Level.
+ */
+- (void)room:(EnxRoom *_Nonnull)room didUserDataReceived:(NSArray *_Nullable)data;
+
+/*
+This delegate method called When any of the user in same room will start sharing file.
+*/
 - (void)room:(EnxRoom *_Nonnull)room
-        didReceiveChatDataAtRoom:(NSArray *_Nullable)data;
+didFileUploadStarted:(NSArray *_Nullable)data;
 
+/*
+This delegate method called When self user will start sharing file.
+*/
+- (void)room:(EnxRoom *_Nonnull)room
+didInitFileUpload:(NSArray *_Nullable)data;
 
+/*
+This delegate method called When File available to download.
+*/
+- (void)room:(EnxRoom *_Nonnull)room
+didFileAvailable:(NSArray *_Nullable)data;
+
+/*
+This delegate method called upload file is success.
+*/
+- (void)room:(EnxRoom *_Nonnull)room
+didFileUploaded:(NSArray *_Nullable)data;
+
+/*
+This delegate method called upload file is failed.
+*/
+- (void)room:(EnxRoom *_Nonnull)room
+didFileUploadFailed:(NSArray *_Nullable)data;
+
+/*
+This delegate method called When download of file success.
+*/
+- (void)room:(EnxRoom *_Nonnull)room
+didFileDownloaded:(NSString *_Nullable)data;
+
+/*
+This delegate method called When file download failed.
+*/
+- (void)room:(EnxRoom *_Nonnull)room
+didFileDownloadFailed:(NSArray *_Nullable)data;
 /*
  This delegate called for advance options updates.
  */
-- (void)room:(EnxRoom *_Nullable)room didAdvanceOptionsUpdate:(NSDictionary *_Nullable)data;
+- (void)room:(EnxRoom *_Nullable)room didAcknowledgementAdvanceOption:(NSDictionary *_Nullable)data;
+
+- (void)room:(EnxRoom *_Nullable)room didBatteryUpdates:(NSDictionary *_Nullable)data;
+
+- (void)room:(EnxRoom *_Nullable)room didAspectRatioUpdates:(NSArray *_Nullable)data;
+
+- (void)room:(EnxRoom *_Nullable)room didVideoResolutionUpdates:(NSArray *_Nullable)data;
 
 - (void)room:(EnxRoom *_Nullable)room didGetAdvanceOptions:(NSArray *_Nullable)data;
 
+
+#pragma mark- Switch user role Delegate
+
+- (void)room:(EnxRoom *_Nullable)room didSwitchUserRole:(NSArray *_Nullable)data;
+
+- (void)room:(EnxRoom *_Nullable)room didUserRoleChanged:(NSArray *_Nullable)data;
+
+
+#pragma mark- Send Data Delegate
+- (void)room:(EnxRoom *_Nullable)room didAcknowledgSendData:(NSArray *_Nullable)data;
+
+//-(void)sendUserData:(NSDictionary *_Nonnull)data broadCast:(BOOL)broadcast clientIds:(NSArray *_Nullable)clientIds;
 @end
 
 ///-----------------------------------
@@ -661,14 +732,17 @@ typedef NS_ENUM(NSInteger, EnxRoomStatus) {
 /// The status of this Room.
 @property (nonatomic, readonly) EnxRoomStatus status;
 
+/// Enx Local stream options.
+@property (readonly, nonatomic) NSDictionary * _Nullable streamOptions;
+
 /// Full response after signalling channel connect the server.
-@property (nonatomic, readonly) NSDictionary * _Nullable roomMetadata;
+@property (nonatomic, readonly) NSMutableDictionary * _Nullable roomMetadata;
 
 /// The Enx room id for this room instance.
 @property (nonatomic, readonly) NSString * _Nullable roomId;
 
 /// NSString stream id of the stream being published
-@property (readonly) NSString * _Nullable publishStreamId;
+//@property (readonly) NSString * _Nullable publishStreamId;
 
 /// EnxStream referencing the stream being published.
 @property (readonly) EnxStream * _Nullable publishStream;
@@ -689,6 +763,7 @@ typedef NS_ENUM(NSInteger, EnxRoomStatus) {
 /// BOOL is P2P kind of room.
 @property (readonly) BOOL peerToPeerRoom;
 
+
 /// RTC Factory shared by streams of this room.
 @property RTCPeerConnectionFactory * _Nullable peerFactory;
 
@@ -700,14 +775,16 @@ typedef NS_ENUM(NSInteger, EnxRoomStatus) {
 
 /// Represent a dictionary with the default values that will be sent at the
 /// moment of subscribe an EnxStream.
-@property NSMutableDictionary * _Nullable defaultSubscribingStreamOptions;
+//@property NSDictionary * _Nullable defaultSubscribingStreamOptions;
 
 @property (nonatomic) BOOL moderatorHardMuteActiveState;
 @property (nonatomic) BOOL participantHardMuteActiveState;
 @property (nonatomic) BOOL isHardMuteRoom;
 @property (nonatomic) BOOL isHardMuteUser;
 @property (nonatomic) BOOL isVideoUserHardMute;
+@property (nonatomic) BOOL isAudioOnlyStreams;
 @property (nonatomic) BOOL isAudioOnlyRoom;
+
 @property(nonatomic)BOOL isReconnectingAttampted;
 //@property (nonatomic,strong) NSNumber *activeTalkerCount;
 // connected clientId
@@ -716,7 +793,8 @@ typedef NS_ENUM(NSInteger, EnxRoomStatus) {
 @property (readonly,weak) NSString * _Nullable clientName;
 @property (nonatomic,weak) NSArray * _Nullable userList;
 @property (readonly,nonatomic) NSString * _Nonnull userRole;
-
+@property(readonly) int maxFrameLimits;
+@property (readonly) NSDictionary * _Nullable roomInfo;
 ///-----------------------------------
 /// @name Public Methods
 ///-----------------------------------
@@ -732,7 +810,7 @@ typedef NS_ENUM(NSInteger, EnxRoomStatus) {
  @see EnxRoomDelegate:room:didError:
  */
 
-- (void)connect:(NSString *_Nonnull)token reconnectInfo:(NSDictionary * _Nullable)reconnectInfo advanceOptions:(NSArray *_Nullable)advanceOption;
+- (void)connect:(NSString *_Nonnull)token roomInfo:(NSDictionary * _Nullable)roomInfo advanceOptions:(NSArray *_Nullable)advanceOption;
 
 /**
  Publishes a given EnxStream with given options.
@@ -798,6 +876,7 @@ typedef NS_ENUM(NSInteger, EnxRoomStatus) {
  
  
  */
+
 -(void)postClientLogs;
 
 /**
@@ -931,6 +1010,8 @@ typedef NS_ENUM(NSInteger, EnxRoomStatus) {
 
 - (void)unMuteSingleUser:(NSString*_Nonnull)clientId;
 
+
+
 /**
  
  A Stream carries different type of media . Audio, Video and/or Data. This stream gets transferred towards remote end points through EnableX Media Servers where it’s played and interacted with.
@@ -950,7 +1031,10 @@ typedef NS_ENUM(NSInteger, EnxRoomStatus) {
  @returns EnxStream.
  
  */
--(EnxStream *_Nullable)initlocalStream:(NSDictionary *_Nonnull)publishStreamInfo;
+
+-(EnxStream *_Nullable)getLocalStream:(NSDictionary *_Nonnull)publishStreamInfo;
+
+-(EnxStream *_Nullable)initlocalStream:(NSDictionary *_Nonnull)publishStreamInfo __attribute__((deprecated("This API is depricated.Use getLocalStream: in EnxRoom")));
 
 /**
  Speaker set active or not active
@@ -1042,8 +1126,9 @@ opt which should be "Auto, HD , SD, LD and talker/canvas"
 -(void)muteSubscribeStreamsAudio:(BOOL)flag;
 
 
--(void)sendMessage:(NSDictionary *_Nonnull)data broadCast:(BOOL)broadcast clientIds:(NSArray *_Nullable)clientIds;
+-(void)sendMessage:(NSString *_Nonnull)message isBroadCast:(BOOL)broadcast recipientIDs:(NSArray *_Nullable)clientIds;
 
+-(void)sendUserData:(NSDictionary *_Nonnull)message isBroadCast:(BOOL)broadcast recipientIDs:(NSArray *_Nullable)clientIds;
 
 /* Client endpoint can set options at room level. */
 
@@ -1052,4 +1137,11 @@ opt which should be "Auto, HD , SD, LD and talker/canvas"
 /* To get Advance options set by client endpoint. */
 -(void)getAdvanceOptions;
 
+//Client endpoint can use this method to switch role.
+-(void)switchUserRole:(NSString *_Nullable)clientId;
+-(void)shareFiles:(EnxFilePosition)position isBroadcast:(BOOL)isBroadcast clientIds:(NSArray *_Nullable)clientIds;
+-(void)downloadFile:(NSDictionary *_Nonnull)file autoSave:(BOOL)flag;
+-(NSArray*_Nonnull)getAvailableFiles;
+
 @end
+

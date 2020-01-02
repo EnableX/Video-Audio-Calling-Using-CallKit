@@ -167,63 +167,6 @@
 ///-----------------------------------
 
 /**
- Creates an instace of EnxStream capturing audio/video from the host device
- with given Audio and Video contraints.
- 
- Notice that the constraints passed to this initializer will also be set as default
- constraint properties for defaultAudioConstraints and defaultVideoConstraints.
- 
- @param videoConstraints RTCMediaConstraints that apply to this stream.
- @param audioConstraints RTCMediaConstraints that apply to this stream.
- 
- @see initLocalStream:
- @see initLocalStreamWithOptions:attributes:videoConstraints:audioConstraints:
- 
- @return instancetype
- */
-- (instancetype _Nonnull)initLocalStreamVideoConstraints:(nullable RTCMediaConstraints *)videoConstraints
-                                        audioConstraints:(nullable RTCMediaConstraints *)audioConstraints
-                                     ;
-
-/**
- Creates an instace of EnxStream capturing audio/video from the host device
- providing options, attributes and Audio and Video contraints.
- 
- Notice that the constraints passed to this initializer will also be set as default
- constraint properties for defaultAudioConstraints and defaultVideoConstraints.
- 
- @param options dictionary. @see kStreamOption for options keys.
- @param attributes dictionary. @see setAttributes.
- @param videoConstraints RTCMediaConstraints that apply to this stream.
- @param audioConstraints RTCMediaConstraints that apply to this stream.
- 
- @see initLocalStream:
- @see initLocalStreamVideoConstraints:audioConstraints:
- 
- @return instancetype
- */
-- (instancetype _Nonnull)initLocalStreamWithOptions:(nullable NSDictionary *)options
-                                         attributes:(nullable NSDictionary *)attributes
-                                   videoConstraints:(nullable RTCMediaConstraints *)videoConstraints
-                                   audioConstraints:(nullable RTCMediaConstraints *)audioConstraints;
-/**
- Creates an instace of EnxStream capturing audio/video from the host device
- providing options, attributes.
- 
- @param options dictionary. @see kStreamOption for options keys.
- @param attributes dictionary. @see setAttributes.
- 
- @see initLocalStream:
- @see initLocalStreamVideoConstraints:audioConstraints:
- @see initLocalStreamWithOptions:attributes:videoConstraints:audioConstraints:
- 
- @return instancetype
- */
-- (instancetype _Nonnull)initLocalStreamWithOptions:(nullable NSDictionary *)options
-                                         attributes:(nullable NSDictionary *)attributes
-                                   signalingChannel:(EnxSignalingChannel *_Nonnull)signalingChannel;
-
-/**
  Creates an instance of EnxStream capturing audio/video data
  from host device with defaultVideoConstraints and defaultAudioConstraints.
  
@@ -253,7 +196,7 @@
  
  @returns NSException.
  */
-- (NSException *_Nullable)switchCamera ;
+- (NSException *_Nullable)switchCamera;
 
 /**
  Indicates if the media stream has audio tracks.
@@ -341,6 +284,7 @@
  */
 - (NSDictionary *_Nullable)getAttributes;
 
+
 /**
  Set attributes of the stream
  
@@ -417,17 +361,15 @@
 /// Indicates attributes hasn't been sent to Enx yet.
 @property (readonly) BOOL dirtyAttributes;
 
-/// Enx Lecol stream options.
-@property (strong, nonatomic) NSMutableDictionary * _Nullable streamOptions;
 
 /// Enx Remote stream options.
 @property (strong, nonatomic) NSDictionary * _Nullable remoteStreamOptions;
 
 /// Factory instance used to access local media.
-@property (strong, nonatomic) RTCPeerConnectionFactory * _Nullable peerFactory;
+//@property (strong, nonatomic) RTCPeerConnectionFactory * _Nullable peerFactory;
 
 /// EnxSignalingChannel instance assigned by EnxRoom at the moment
-@property (weak) EnxSignalingChannel * _Nullable signalingChannel;
+//@property (weak) EnxSignalingChannel * _Nullable signalingChannel;
 
 /// EnxRoom instance at the moment
 @property (weak, nonatomic) EnxRoom * _Nullable room;
@@ -442,20 +384,20 @@
 //
 @property (nonatomic) BOOL isSelfVideoMuted;
 
-@property (strong,nonatomic) NSString * _Nullable mediaType;
+@property (weak,nonatomic) NSString * _Nullable mediaType;
 
 
 /// Default video contraints.
-@property (readonly) RTCMediaConstraints * _Nullable defaultVideoConstraints;
+@property (readonly,weak) RTCMediaConstraints * _Nullable defaultVideoConstraints;
 
 /// Default audio contraints.
-@property (readonly) RTCMediaConstraints * _Nullable defaultAudioConstraints;
+@property (readonly,weak) RTCMediaConstraints * _Nullable defaultAudioConstraints;
 
-@property (readonly) RTCCameraVideoCapturer * _Nullable capturer;
+@property (nonatomic) RTCCameraVideoCapturer * _Nullable capturer;
 
-@property(readonly) EnxPlayerView * _Nullable enxPlayerView;
+@property(weak,readonly,nonatomic) EnxPlayerView * _Nullable enxPlayerView;
 @property(strong,nonatomic) NSString * _Nullable clientID;
-
+ @property (readonly) BOOL usingFrontCamera;
 //@property (strong,nonatomic) NSDictionary * _Nullable receivedDataDictionary;
 //
 - (void)SelfHardMuteAudio:(BOOL)isMuted;

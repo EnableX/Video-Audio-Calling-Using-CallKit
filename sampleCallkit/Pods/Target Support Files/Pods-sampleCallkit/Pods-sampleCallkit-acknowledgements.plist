@@ -14,6 +14,16 @@
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>https://www.enablex.io/legals/tou/</string>
+			<key>License</key>
+			<string>Vcloudx License, Version 1.1</string>
+			<key>Title</key>
+			<string>EnxRTCiOS</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string># webrtc
 ```
 Copyright (c) 2011, The WebRTC project authors. All rights reserved.
@@ -2146,7 +2156,7 @@ Apache License
 			<key>License</key>
 			<string>Apache License, Version 2.0</string>
 			<key>Title</key>
-			<string>Starscream</string>
+			<string>StarscreamSocketIO</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>
