@@ -12,5 +12,5 @@ import Foundation
 //Dev
 
 
-let kBasedURL = "https://vcm-mt.vcloudx.com/"
+let kBasedURL = "Server URL"
 

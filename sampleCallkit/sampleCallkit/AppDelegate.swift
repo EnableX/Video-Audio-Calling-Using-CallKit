@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let pushRegistry = PKPushRegistry(queue: DispatchQueue.main)
     let callManager = EnxCallManager()
     var providerDelegate : ProviderDelegate?
-    let room_Id = "5d64b23dc93363320a8973a4"
+    let room_Id = "Room ID"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         providerDelegate = ProviderDelegate(callManager: callManager)
