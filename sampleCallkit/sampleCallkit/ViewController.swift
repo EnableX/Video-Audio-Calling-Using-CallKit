@@ -5,14 +5,13 @@
 //  Created by Jay Kumar on 20/08/19.
 //  Copyright © 2019 Jay Kumar. All rights reserved.
 //
-
+import Foundation
 import UIKit
 import EnxRTCiOS
 import AVFoundation
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var trigerCallBtn: UIButton!
-   
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getPrivacyAccess()
@@ -39,14 +38,9 @@ class ViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     @IBAction func trigerCallEvent(_ sender: Any) {
-        guard let appdel = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
         if trigerCallBtn.titleLabel?.text == "Call Triger"{
-            
-            appdel.callManager.startCall(handle: "Jay Kumar")
-            trigerCallBtn.setTitle("End Call", for: .normal)
-            trigerCallBtn.setTitleColor(.red, for: .normal)
+            //Create Room
+            createRoom();
         }
         else{
             endCall()
@@ -55,6 +49,45 @@ class ViewController: UIViewController {
             trigerCallBtn.setTitleColor(.black, for: .normal)
         }
     }
+    func createRoom(){
+        guard EnxNetworkManager.isReachable() else {
+            self.showAleartView(message:"Kindly check your Network Connection", andTitles: "OK")
+            return
+        }
+        VCXServicesClass.createRoom(completion:{roomModel  in
+            DispatchQueue.main.async {
+                //Success Response from server
+                if roomModel.room_id != nil{
+                    let appdel = UIApplication.shared.delegate as? AppDelegate
+                    appdel!.room_Id = roomModel.room_id
+                    //Triget Call
+                    appdel!.callManager.startCall(handle: "Jay Kumar", roomID: roomModel.room_id)
+                    self.trigerCallBtn.setTitle("End Call", for: .normal)
+                    self.trigerCallBtn.setTitleColor(.red, for: .normal)
+                }
+                //Handeling server giving no error but due to wrong PIN room not available
+                else if roomModel.isRoomFlag == false && roomModel.error == nil {
+                    self.showAleartView(message:"Unable to connect, Kindly try again", andTitles: "OK")
+                }
+                //Handeling server error
+                else{
+                    print(roomModel.error!)
+                    self.showAleartView(message:roomModel.error, andTitles: "OK")
+                }
+            }
+        })
+    }
+    // MARK: - Show Alert
+    /**
+     Show Alert Based in requirement.
+     Input parameter :- Message and Event name for Alert
+     **/
+    private func showAleartView(message : String, andTitles : String){
+        let alert = UIAlertController(title: " ", message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: andTitles, style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @objc func handleChangedNotification(notification: NSNotification) {
         guard let appdel = UIApplication.shared.delegate as? AppDelegate else {
             return

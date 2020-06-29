@@ -7,10 +7,9 @@ target 'sampleCallkit' do
 
   # Pods for sampleCallkit
  	pod 'EnxRTCiOS'
- 	pod 'Socket.IO-Client-Swift', '~> 12.0.0'
-  #pod 'Firebase/Messaging'
-  # pod 'Firebase/Analytics'
+ 	pod 'Socket.IO-Client-Swift', '~> 15.0.0'
   pod 'NWPusher', '~> 0.7.0'
+  pod 'ReachabilitySwift'
 
   target 'sampleCallkitTests' do
     inherit! :search_paths

@@ -126,13 +126,13 @@ class EnxCall: NSObject {
         guard let appdel = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
-        let inputParam : [String : String] = ["name" :"Jay" , "role" :  "participant" ,"roomId" : appdel.room_Id, "user_ref" : "2236"]
+        let inputParam : [String : String] = ["name" :"EnablexRoom" , "role" :  "participant" ,"roomId" : appdel.room_Id, "user_ref" : "2236"]
         VCXServicesClass.featchToken(requestParam: inputParam, completion:{token  in
             DispatchQueue.main.async {
                 //  Success Response from server
                     let videoSize : NSDictionary =  ["minWidth" : 720 , "minHeight" : 480 , "maxWidth" : 1280, "maxHeight" :720]
-                let roomInfo : [String : Any] = ["allow_reconnect" :true , "number_of_attempts" :  3 ,"timeout_interval" : 20, "audio_only" : true]
-                    let localStreamInfo : NSDictionary = ["video" : false ,"audio" : true  ,"data" :true ,"name" :"Jay","type" : "public" ,"maxVideoBW" : 400 ,"minVideoBW" : 300 , "videoSize" : videoSize]
+                let roomInfo : [String : Any] = ["allow_reconnect" :true , "number_of_attempts" :  3 ,"timeout_interval" : 20]
+                    let localStreamInfo : NSDictionary = ["video" : false ,"audio" : true  ,"data" :true ,"name" :"Jay","type" : "public","audio_only" : true ,"maxVideoBW" : 400 ,"minVideoBW" : 300 , "videoSize" : videoSize]
                 guard let steam = self.objectJoin.joinRoom(token, delegate: self, publishStreamInfo: (localStreamInfo as! [AnyHashable : Any]), roomInfo: roomInfo, advanceOptions: nil) else{
                         return
                     }

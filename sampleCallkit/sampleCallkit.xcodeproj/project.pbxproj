@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		16133B7956953356B54C56D9 /* Pods_sampleCallkitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 120D2B2AE1327AD8CC4F66F9 /* Pods_sampleCallkitUITests.framework */; };
 		AD7B73E50E1DACE0F7D99694 /* Pods_sampleCallkitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8C8003ABD44D971BCD7D44 /* Pods_sampleCallkitTests.framework */; };
+		BD381DAE24A9E19B00FDC63A /* EnxRoomInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD381DAD24A9E19B00FDC63A /* EnxRoomInfoModel.swift */; };
+		BD381DB024A9E21F00FDC63A /* EnxNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD381DAF24A9E21F00FDC63A /* EnxNetworkManager.swift */; };
 		BD3F4D8A230C203A00F25013 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3F4D89230C203A00F25013 /* AppDelegate.swift */; };
 		BD3F4D8C230C203A00F25013 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3F4D8B230C203A00F25013 /* ViewController.swift */; };
 		BD3F4D8F230C203A00F25013 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD3F4D8D230C203A00F25013 /* Main.storyboard */; };
@@ -50,6 +52,8 @@
 		53300CC473C02BC97A6DC67E /* Pods-sampleCallkitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sampleCallkitUITests.debug.xcconfig"; path = "Target Support Files/Pods-sampleCallkitUITests/Pods-sampleCallkitUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		62CA273C084BBDA78E8A5323 /* Pods-sampleCallkitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sampleCallkitTests.debug.xcconfig"; path = "Target Support Files/Pods-sampleCallkitTests/Pods-sampleCallkitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9862D4CADDBE90DB9A6E6884 /* Pods-sampleCallkitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sampleCallkitUITests.release.xcconfig"; path = "Target Support Files/Pods-sampleCallkitUITests/Pods-sampleCallkitUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BD381DAD24A9E19B00FDC63A /* EnxRoomInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnxRoomInfoModel.swift; sourceTree = "<group>"; };
+		BD381DAF24A9E21F00FDC63A /* EnxNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnxNetworkManager.swift; sourceTree = "<group>"; };
 		BD3F4D86230C203A00F25013 /* sampleCallkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sampleCallkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD3F4D89230C203A00F25013 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD3F4D8B230C203A00F25013 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +155,8 @@
 				BD3F4DC1230D19FB00F25013 /* EnxCallManager.swift */,
 				BD3F4DC3230D1A5700F25013 /* EnxCall.swift */,
 				BDA57C362314EB650084D10E /* VCXServicesClass.swift */,
+				BD381DAF24A9E21F00FDC63A /* EnxNetworkManager.swift */,
+				BD381DAD24A9E19B00FDC63A /* EnxRoomInfoModel.swift */,
 				BD3F4DC8230D671100F25013 /* sampleCallkit.entitlements */,
 			);
 			path = sampleCallkit;
@@ -419,7 +425,9 @@
 				BD3F4D8C230C203A00F25013 /* ViewController.swift in Sources */,
 				BD3F4DC4230D1A5700F25013 /* EnxCall.swift in Sources */,
 				BD3F4DC2230D19FB00F25013 /* EnxCallManager.swift in Sources */,
+				BD381DB024A9E21F00FDC63A /* EnxNetworkManager.swift in Sources */,
 				BD3F4D8A230C203A00F25013 /* AppDelegate.swift in Sources */,
+				BD381DAE24A9E19B00FDC63A /* EnxRoomInfoModel.swift in Sources */,
 				BD3F4DC0230D193F00F25013 /* ProviderDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

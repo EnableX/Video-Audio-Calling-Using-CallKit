@@ -12,13 +12,14 @@ import NWPusher
 
 class EnxCallManager: NSObject {
     let callContr = CXCallController()
-    func startCall(handle : String , video : Bool = false) {
+    func startCall(handle : String , roomID : String, video : Bool = false) {
         let handle = CXHandle(type: .phoneNumber, value: handle)
+        let roomID = roomID;
         let startCall = CXStartCallAction(call: UUID(), handle: handle)
         startCall.isVideo = video
         let callTransaction = CXTransaction()
         callTransaction.addAction(startCall)
-        requestCall(callTransaction, action: "startCall")
+        requestCall(callTransaction, action: "startCall" , RoomId: roomID)
     }
     func endCall(call : EnxCall){
         let endCall = CXEndCallAction(call: call.uuid)
@@ -32,11 +33,18 @@ class EnxCallManager: NSObject {
         callTransaction.addAction(handleCall)
         requestCall(callTransaction, action: "holdCall")
     }
-    private func requestCall(_ callTrans : CXTransaction , action : String = ""){
+    private func requestCall(_ callTrans : CXTransaction , action : String = "" , RoomId : String = ""){
         callContr.request(callTrans){ error in
             if let error = error {
                 print("Error requesting transaction: \(error)")
             } else {
+                if(action == "startCall"){
+                    // Handle Push Notification for start Call here and pass roomID through push notification to join the same room
+                    
+                }
+                else if(action == "endCall"){
+                    // Handle Push Notification for End Call here
+                }
                 print("Requested transaction \(action) successfully")
             }
         }

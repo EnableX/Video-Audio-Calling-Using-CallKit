@@ -2,5 +2,6 @@ ${PODS_ROOT}/Target Support Files/Pods-sampleCallkit/Pods-sampleCallkit-framewor
 ${PODS_ROOT}/EnxRTCiOS/EnxRTCiOS.framework
 ${PODS_ROOT}/GoogleWebRTC/Frameworks/frameworks/WebRTC.framework
 ${BUILT_PRODUCTS_DIR}/NWPusher/NWPusher.framework
+${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework
 ${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework
-${BUILT_PRODUCTS_DIR}/StarscreamSocketIO/StarscreamSocketIO.framework
+${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework

@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let pushRegistry = PKPushRegistry(queue: DispatchQueue.main)
     let callManager = EnxCallManager()
     var providerDelegate : ProviderDelegate?
-    let room_Id = "Room ID"
+    var room_Id : String = "Room ID"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         providerDelegate = ProviderDelegate(callManager: callManager)
@@ -58,6 +58,9 @@ extension AppDelegate : PKPushRegistryDelegate{
     func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, for type: PKPushType, completion: @escaping () -> Void) {
         print("\(#function) incoming voip call notfication: \(payload.dictionaryPayload)")
         let payLoadValue =  payload.dictionaryPayload["aps"] as! [String : String]
+        if((payLoadValue["roomId"]) != nil){
+            room_Id = payLoadValue["roomId"]!
+        }
         if let uuidString = payLoadValue["UUID"] , let handle = payLoadValue["handle"] , let uuid = UUID(uuidString: uuidString){
             if(handle == "start call"){
                 let backGroundTaskIndet = UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
