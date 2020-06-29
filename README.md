@@ -32,7 +32,7 @@ Started](https://guides.cocoapods.org/using/getting-started.html#getting-started
 * Create your Application Key
 * Get your App ID and App Key delivered to your Email
 
-#### 1.1.2 Test Application Server
+#### 2.1.2 Test Application Server
 
 You need to setup an Application Server to provision Web Service API for your iOS Application to communicate enabling Video Session. 
 
@@ -43,7 +43,7 @@ Our Application Server restricts a single Session Duation to 10 minutes, and all
 Once you tried EnableX iOS Sample Application, you may need to setup your own  Application Server and verify your Application to work with your Application Server.  More on this, read Point 2 later in the Document.
 
 
-#### 1.1.3 Configure iOS Client 
+#### 2.1.3 Configure iOS Client 
 
 * Open the App
 * Go to VCXConstant.swift, it's reads- 
@@ -65,9 +65,9 @@ Once you tried EnableX iOS Sample Application, you may need to setup your own  A
     let kAppkey   = ""
  
  ```
- ### 1.2 Test
+ ### 2.2 Test
 
- #### 1.2.1 Open the App
+ #### 2.2.1 Open the App
 
  * Open the App in your Device. 
  * You need to create a Room by clicking the "Call Triger" button.
@@ -76,7 +76,7 @@ Once you tried EnableX iOS Sample Application, you may need to setup your own  A
 
  Note: Only one user with Moderator Role allowed to connect to a Virtual Room while trying with EnableX Hosted Service. Your Own Application Server may allow upto 5 Moderators. 
  
- ## 2 Setup Your Own Application Server
+ ## 3 Setup Your Own Application Server
 
  You may need to setup your own Application Server after you tried the Sample Application with EnableX hosted Server. We have differnt variant of Appliciation Server Sample Code, pick one in your preferred language and follow instructions given in respective README.md file.
 
@@ -92,18 +92,18 @@ Once you tried EnableX iOS Sample Application, you may need to setup your own  A
  To know more about Server API, go to:
  https://developer.enablex.io/latest/server-api/
  
- ## 2.1 iOS Toolkit
+ ## 3.1 iOS Toolkit
 
  This Sample Applcation uses EnableX iOS Toolkit to communicate with EnableX Servers to initiate and manage Real Time Communications. You might need to update your Application with latest version of EnableX iOS Toolkit time as and when a new release is avaialble.  
 
  * Documentation: https://developer.enablex.io/latest/client-api/ios-toolkit/
  * Download: https://developer.enablex.io/resources/downloads/#ios-toolkit
 
-3. Use Xcode to build and run the app on an iOS device.
+4. Use Xcode to build and run the app on an iOS device.
 
 ### Exploring the sample app
 
-4 **Call Triger**: 
+5 **Call Triger**: 
 
 ![home](./home.png)
 
