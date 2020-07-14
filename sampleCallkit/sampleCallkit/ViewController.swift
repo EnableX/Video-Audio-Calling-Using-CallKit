@@ -5,16 +5,23 @@
 //  Created by Jay Kumar on 20/08/19.
 //  Copyright © 2019 Jay Kumar. All rights reserved.
 //
-import Foundation
+
 import UIKit
 import EnxRTCiOS
 import AVFoundation
+import UIKit
+import SVProgressHUD
 class ViewController: UIViewController {
-    
+
     @IBOutlet weak var trigerCallBtn: UIButton!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getPrivacyAccess()
+        NotificationCenter.default.addObserver(self, selector: #selector(startCallTriger), name: NSNotification.Name("startCallTriger"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(endCalltriger), name: NSNotification.Name("endCallTriger"), object: nil)
+        
+        
         // Do any additional setup after loading the view.
     }
     private func getPrivacyAccess(){
@@ -29,24 +36,30 @@ class ViewController: UIViewController {
             })
         }
     }
+    @objc func endCalltriger(){
+        endCall()
+        trigerCallBtn.setTitle("Call Triger", for: .normal)
+        trigerCallBtn.setTitleColor(.black, for: .normal)
+    }
+    @objc func startCallTriger(){
+        self.performSegue(withIdentifier: "confrencePage", sender: nil)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(handleChangedNotification(notification:)), name: EnxCallManager.callsChangedNotification, object: nil)
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self, name: EnxCallManager.callsChangedNotification, object: nil)
+        //NotificationCenter.default.removeObserver(self)
     }
     @IBAction func trigerCallEvent(_ sender: Any) {
         if trigerCallBtn.titleLabel?.text == "Call Triger"{
             //Create Room
             createRoom();
-        }
-        else{
-            endCall()
-            //pushEndCallNotification()
-            trigerCallBtn.setTitle("Call Triger", for: .normal)
-            trigerCallBtn.setTitleColor(.black, for: .normal)
         }
     }
     func createRoom(){
@@ -54,6 +67,7 @@ class ViewController: UIViewController {
             self.showAleartView(message:"Kindly check your Network Connection", andTitles: "OK")
             return
         }
+        SVProgressHUD.show()
         VCXServicesClass.createRoom(completion:{roomModel  in
             DispatchQueue.main.async {
                 //Success Response from server
@@ -74,20 +88,20 @@ class ViewController: UIViewController {
                     print(roomModel.error!)
                     self.showAleartView(message:roomModel.error, andTitles: "OK")
                 }
+                SVProgressHUD.dismiss()
             }
         })
     }
     // MARK: - Show Alert
-    /**
-     Show Alert Based in requirement.
-     Input parameter :- Message and Event name for Alert
-     **/
-    private func showAleartView(message : String, andTitles : String){
-        let alert = UIAlertController(title: " ", message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: andTitles, style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
+      /**
+       Show Alert Based in requirement.
+       Input parameter :- Message and Event name for Alert
+       **/
+      private func showAleartView(message : String, andTitles : String){
+          let alert = UIAlertController(title: " ", message: message, preferredStyle: UIAlertController.Style.alert)
+          alert.addAction(UIAlertAction(title: andTitles, style: .default, handler: nil))
+          self.present(alert, animated: true, completion: nil)
+      }
     @objc func handleChangedNotification(notification: NSNotification) {
         guard let appdel = UIApplication.shared.delegate as? AppDelegate else {
             return

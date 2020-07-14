@@ -6,10 +6,11 @@ target 'sampleCallkit' do
   use_frameworks!
 
   # Pods for sampleCallkit
- 	pod 'EnxRTCiOS'
- 	pod 'Socket.IO-Client-Swift', '~> 15.0.0'
+  pod 'EnxRTCiOS'
+   pod 'Socket.IO-Client-Swift', '~> 15.0.0'
   pod 'NWPusher', '~> 0.7.0'
   pod 'ReachabilitySwift'
+  pod 'SVProgressHUD'
 
   target 'sampleCallkitTests' do
     inherit! :search_paths

@@ -7,12 +7,14 @@ PODS:
   - Socket.IO-Client-Swift (15.0.0):
     - Starscream (~> 3.1)
   - Starscream (3.1.1)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - EnxRTCiOS
   - NWPusher (~> 0.7.0)
   - ReachabilitySwift
   - Socket.IO-Client-Swift (~> 15.0.0)
+  - SVProgressHUD
 
 SPEC REPOS:
   trunk:
@@ -22,6 +24,7 @@ SPEC REPOS:
     - ReachabilitySwift
     - Socket.IO-Client-Swift
     - Starscream
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   EnxRTCiOS: 3004e4cd586374ba6b6d6355288de54b75f7d2f6
@@ -30,7 +33,8 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Socket.IO-Client-Swift: c039a808195d22a7192962841b8c035cb61ea49e
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: f57e8db9aee93f72626cbe278c82d1ff162a176a
+PODFILE CHECKSUM: a65ecf99a83db6460398661952c826c8d99c51a6
 
 COCOAPODS: 1.9.3

@@ -9,6 +9,31 @@
 			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
+		<key>sampleCallkitTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>BD3F4D85230C203A00F25013</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BD3F4D99230C203D00F25013</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BD3F4DA4230C203D00F25013</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 	</dict>
 </dict>
 </plist>

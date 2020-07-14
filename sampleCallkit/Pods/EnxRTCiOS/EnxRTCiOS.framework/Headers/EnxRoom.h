@@ -1350,5 +1350,6 @@ opt which should be "Auto, HD , SD, LD and talker/canvas"
 /* this method help to rearrange collection view*/
 -(void)adjustLayout;
 
+
 @end
 

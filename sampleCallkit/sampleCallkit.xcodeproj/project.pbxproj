@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		16133B7956953356B54C56D9 /* Pods_sampleCallkitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 120D2B2AE1327AD8CC4F66F9 /* Pods_sampleCallkitUITests.framework */; };
 		AD7B73E50E1DACE0F7D99694 /* Pods_sampleCallkitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8C8003ABD44D971BCD7D44 /* Pods_sampleCallkitTests.framework */; };
-		BD381DAE24A9E19B00FDC63A /* EnxRoomInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD381DAD24A9E19B00FDC63A /* EnxRoomInfoModel.swift */; };
-		BD381DB024A9E21F00FDC63A /* EnxNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD381DAF24A9E21F00FDC63A /* EnxNetworkManager.swift */; };
+		BD35F02524AB0CA900E2F0FE /* EnxNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD35F02324AB0CA900E2F0FE /* EnxNetworkManager.swift */; };
+		BD35F02624AB0CA900E2F0FE /* EnxRoomInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD35F02424AB0CA900E2F0FE /* EnxRoomInfoModel.swift */; };
 		BD3F4D8A230C203A00F25013 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3F4D89230C203A00F25013 /* AppDelegate.swift */; };
 		BD3F4D8C230C203A00F25013 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3F4D8B230C203A00F25013 /* ViewController.swift */; };
 		BD3F4D8F230C203A00F25013 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD3F4D8D230C203A00F25013 /* Main.storyboard */; };
@@ -23,6 +23,7 @@
 		BD3F4DC4230D1A5700F25013 /* EnxCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3F4DC3230D1A5700F25013 /* EnxCall.swift */; };
 		BD3F4DD6230FB5A600F25013 /* resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BD3F4DD5230FB5A600F25013 /* resource.bundle */; };
 		BD4BEB05231682D400F04042 /* VCXConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4BEB04231682D300F04042 /* VCXConstant.swift */; };
+		BD6BDE3D24BD779B000F22B0 /* ConfrencePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6BDE3C24BD779B000F22B0 /* ConfrencePageViewController.swift */; };
 		BD8833E10AEA6E83A9E719DC /* Pods_sampleCallkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0F45898A78EBD882CE5B88 /* Pods_sampleCallkit.framework */; };
 		BDA57C372314EB650084D10E /* VCXServicesClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA57C362314EB650084D10E /* VCXServicesClass.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		27CEB509236079C4008A0DA3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0F8C8003ABD44D971BCD7D44 /* Pods_sampleCallkitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sampleCallkitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		120D2B2AE1327AD8CC4F66F9 /* Pods_sampleCallkitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sampleCallkitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,8 +66,8 @@
 		53300CC473C02BC97A6DC67E /* Pods-sampleCallkitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sampleCallkitUITests.debug.xcconfig"; path = "Target Support Files/Pods-sampleCallkitUITests/Pods-sampleCallkitUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		62CA273C084BBDA78E8A5323 /* Pods-sampleCallkitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sampleCallkitTests.debug.xcconfig"; path = "Target Support Files/Pods-sampleCallkitTests/Pods-sampleCallkitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9862D4CADDBE90DB9A6E6884 /* Pods-sampleCallkitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sampleCallkitUITests.release.xcconfig"; path = "Target Support Files/Pods-sampleCallkitUITests/Pods-sampleCallkitUITests.release.xcconfig"; sourceTree = "<group>"; };
-		BD381DAD24A9E19B00FDC63A /* EnxRoomInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnxRoomInfoModel.swift; sourceTree = "<group>"; };
-		BD381DAF24A9E21F00FDC63A /* EnxNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnxNetworkManager.swift; sourceTree = "<group>"; };
+		BD35F02324AB0CA900E2F0FE /* EnxNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnxNetworkManager.swift; sourceTree = "<group>"; };
+		BD35F02424AB0CA900E2F0FE /* EnxRoomInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnxRoomInfoModel.swift; sourceTree = "<group>"; };
 		BD3F4D86230C203A00F25013 /* sampleCallkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sampleCallkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD3F4D89230C203A00F25013 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD3F4D8B230C203A00F25013 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +88,7 @@
 		BD3F4DC8230D671100F25013 /* sampleCallkit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = sampleCallkit.entitlements; sourceTree = "<group>"; };
 		BD3F4DD5230FB5A600F25013 /* resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = resource.bundle; sourceTree = "<group>"; };
 		BD4BEB04231682D300F04042 /* VCXConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCXConstant.swift; sourceTree = "<group>"; };
+		BD6BDE3C24BD779B000F22B0 /* ConfrencePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfrencePageViewController.swift; sourceTree = "<group>"; };
 		BDA57C362314EB650084D10E /* VCXServicesClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCXServicesClass.swift; sourceTree = "<group>"; };
 		DEF8A1EE991FA22C58FBA0B2 /* Pods-sampleCallkitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sampleCallkitTests.release.xcconfig"; path = "Target Support Files/Pods-sampleCallkitTests/Pods-sampleCallkitTests.release.xcconfig"; sourceTree = "<group>"; };
 		F9C45F8E90494C845B939B4F /* Pods-sampleCallkit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sampleCallkit.release.xcconfig"; path = "Target Support Files/Pods-sampleCallkit/Pods-sampleCallkit.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,8 +170,9 @@
 				BD3F4DC1230D19FB00F25013 /* EnxCallManager.swift */,
 				BD3F4DC3230D1A5700F25013 /* EnxCall.swift */,
 				BDA57C362314EB650084D10E /* VCXServicesClass.swift */,
-				BD381DAF24A9E21F00FDC63A /* EnxNetworkManager.swift */,
-				BD381DAD24A9E19B00FDC63A /* EnxRoomInfoModel.swift */,
+				BD35F02324AB0CA900E2F0FE /* EnxNetworkManager.swift */,
+				BD35F02424AB0CA900E2F0FE /* EnxRoomInfoModel.swift */,
+				BD6BDE3C24BD779B000F22B0 /* ConfrencePageViewController.swift */,
 				BD3F4DC8230D671100F25013 /* sampleCallkit.entitlements */,
 			);
 			path = sampleCallkit;
@@ -205,6 +221,7 @@
 				BD3F4D83230C203A00F25013 /* Frameworks */,
 				BD3F4D84230C203A00F25013 /* Resources */,
 				C6FEC3AA12F8F425BD9992B3 /* [CP] Embed Pods Frameworks */,
+				27CEB509236079C4008A0DA3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -422,12 +439,13 @@
 			files = (
 				BD4BEB05231682D400F04042 /* VCXConstant.swift in Sources */,
 				BDA57C372314EB650084D10E /* VCXServicesClass.swift in Sources */,
+				BD35F02524AB0CA900E2F0FE /* EnxNetworkManager.swift in Sources */,
 				BD3F4D8C230C203A00F25013 /* ViewController.swift in Sources */,
 				BD3F4DC4230D1A5700F25013 /* EnxCall.swift in Sources */,
+				BD6BDE3D24BD779B000F22B0 /* ConfrencePageViewController.swift in Sources */,
+				BD35F02624AB0CA900E2F0FE /* EnxRoomInfoModel.swift in Sources */,
 				BD3F4DC2230D19FB00F25013 /* EnxCallManager.swift in Sources */,
-				BD381DB024A9E21F00FDC63A /* EnxNetworkManager.swift in Sources */,
 				BD3F4D8A230C203A00F25013 /* AppDelegate.swift in Sources */,
-				BD381DAE24A9E19B00FDC63A /* EnxRoomInfoModel.swift in Sources */,
 				BD3F4DC0230D193F00F25013 /* ProviderDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -609,6 +627,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BH56368Y47;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/sampleCallkit",
+				);
 				INFOPLIST_FILE = sampleCallkit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -633,6 +655,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BH56368Y47;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/sampleCallkit",
+				);
 				INFOPLIST_FILE = sampleCallkit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (

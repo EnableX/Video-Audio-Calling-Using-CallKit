@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 /* To try the app with Enablex hosted service you need to set the kTry = true */
     let kTry      = true
 
@@ -20,5 +19,3 @@ import Foundation
 /*Use enablec portal to create your app and get these following credentials*/
     let kAppId    = "App_Id"
     let kAppkey   = "App_Key"
-
-

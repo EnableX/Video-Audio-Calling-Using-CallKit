@@ -14,10 +14,6 @@ class EnxCall: NSObject {
     let uuid : UUID
     let isOutGoing: Bool
     var handle : String?
-    var remoteRoom : EnxRoom!
-    var objectJoin : EnxRtc!
-    var localStream : EnxStream!
-    
     //Mark : Start Call properties
     var connectData : Date?{
         didSet{
@@ -103,195 +99,13 @@ class EnxCall: NSObject {
         hasStartedConnecting = true
     }
     func endCall(){
-        if(remoteRoom != nil){
-            remoteRoom.disconnect()
-            remoteRoom = nil;
-        }
-        if(objectJoin != nil){
-            objectJoin = nil;
-        }
-        if(localStream != nil){
-            localStream = nil;
-        }
+  
         hasEnded = true
     }
     func startAudio() {
         
     }
     private func setUproom(){
-        objectJoin = EnxRtc()
-        self.createToken()
+         NotificationCenter.default.post(name: NSNotification.Name("startCallTriger"), object: nil)
     }
-    func createToken(){
-        guard let appdel = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        let inputParam : [String : String] = ["name" :"EnablexRoom" , "role" :  "participant" ,"roomId" : appdel.room_Id, "user_ref" : "2236"]
-        VCXServicesClass.featchToken(requestParam: inputParam, completion:{token  in
-            DispatchQueue.main.async {
-                //  Success Response from server
-                    let videoSize : NSDictionary =  ["minWidth" : 720 , "minHeight" : 480 , "maxWidth" : 1280, "maxHeight" :720]
-                let roomInfo : [String : Any] = ["allow_reconnect" :true , "number_of_attempts" :  3 ,"timeout_interval" : 20]
-                    let localStreamInfo : NSDictionary = ["video" : false ,"audio" : true  ,"data" :true ,"name" :"Jay","type" : "public","audio_only" : true ,"maxVideoBW" : 400 ,"minVideoBW" : 300 , "videoSize" : videoSize]
-                guard let steam = self.objectJoin.joinRoom(token, delegate: self, publishStreamInfo: (localStreamInfo as! [AnyHashable : Any]), roomInfo: roomInfo, advanceOptions: nil) else{
-                        return
-                    }
-                    self.localStream = steam
-                self.localStream.delegate = self as EnxStreamDelegate
-            }
-        })
-    }
-}
-/*
- // MARK: - Extension
- Delegates Methods
- */
-extension EnxCall : EnxRoomDelegate, EnxStreamDelegate {
-    //Mark - EnxRoom Delegates
-    /*
-     This Delegate will notify to User Once he got succes full join Room
-     */
-    func room(_ room: EnxRoom?, didConnect roomMetadata: [AnyHashable : Any]?) {
-        hasConnected = true
-        startCallCompletion?(true)
-        answCallCompletion?(true)
-        remoteRoom = room
-        remoteRoom.publish(localStream)
-    }
-    /*
-     This Delegate will notify to User Once he Getting error in joining room
-     */
-     func room(_ room: EnxRoom?, didError reason: [Any]?) {
-    }
-    /*
-     This Delegate will notify to  User Once he Publisg Stream
-     */
-    func room(_ room: EnxRoom?, didPublishStream stream: EnxStream?) {
-        //To Do
-    }
-    /*
-     This Delegate will notify to  User Once he Unpublisg Stream
-     */
-    func room(_ room: EnxRoom?, didUnpublishStream stream: EnxStream?) {
-        //To Do
-    }
-    /*
-     This Delegate will notify to User if any new person added to room
-     */
-    func room(_ room: EnxRoom?, didAddedStream stream: EnxStream?) {
-        room!.subscribe(stream!)
-    }
-    /*
-     This Delegate will notify to User if any new person Romove from room
-     */
-    func room(_ room: EnxRoom?, didRemovedStream stream: EnxStream?) {
-        //To Do
-    }
-    /*
-     This Delegate will notify to User to subscribe other user stream
-     */
-    func room(_ room: EnxRoom?, didSubscribeStream stream: EnxStream?) {
-        //To Do
-    }
-    /*
-     This Delegate will notify to User to Unsubscribe other user stream
-     */
-    func room(_ room: EnxRoom?, didUnSubscribeStream stream: EnxStream?) {
-        //To Do
-    }
-    /*
-     This Delegate will notify to User if Room Got discunnected
-     */
-    func roomDidDisconnected(_ status: EnxRoomStatus) {
-        // self.leaveRoom()
-        //self.navigationController?.popViewController(animated: true)
-        
-    }
-    /*
-     This Delegate will notify to User if any person join room
-     */
-    func room(_ room: EnxRoom?, userDidJoined Data: [Any]?) {
-        //listOfParticipantInRoom.append(Data!)
-    }
-    /*
-     This Delegate will notify to User if any person got discunnected
-     */
-    func room(_ room: EnxRoom?, userDidDisconnected Data: [Any]?) {
-        //self.leaveRoom()
-        remoteRoom?.disconnect()
-    }
-    /*
-     This Delegate will notify to User if any person got discunnected
-     */
-    func room(_ room: EnxRoom?, didChange status: EnxRoomStatus) {
-        //To Do
-    }
-    /*
-     This Delegate will notify to User once any stream got publish
-     */
-    func room(_ room: EnxRoom?, didReceiveData data: [AnyHashable : Any]?, from stream: EnxStream?) {
-        //To Do
-    }
-    /*
-     This Delegate will notify to User to get updated attributes of particular Stream
-     */
-    func room(_ room: EnxRoom?, didUpdateAttributesOf stream: EnxStream?) {
-        //To Do
-    }
-    /*
-     This Delegate will notify to User if any new User Reconnect the room
-     */
-    func room(_ room: EnxRoom?, didReconnect reason: String?) {
-        //To Do
-    }
-    /*
-     This Delegate will notify to User with active talker list
-     */
-    func room(_ room: EnxRoom?, activeTalkerList Data: [Any]?) {
-        //To Do
-        
-    }
-    
-    func room(_ room: EnxRoom?, didEventError reason: [Any]?) {
-        //let resDict = reason![0] as! [String : Any]
-    }
-    
-    //Mark- EnxStreamDelegate Delegate
-    /*
-     This Delegate will notify to current User If User will do Self Stop Video
-     */
-    func stream(_ stream: EnxStream?, didSelfMuteVideo data: [Any]?) {
-        //To Do
-    }
-    /*
-     This Delegate will notify to current User If User will do Self Start Video
-     */
-    func stream(_ stream: EnxStream?, didSelfUnmuteVideo data: [Any]?) {
-        //To Do
-    }
-    /*
-     This Delegate will notify to current User If User will do Self Mute Audio
-     */
-    func stream(_ stream: EnxStream?, didSelfMuteAudio data: [Any]?) {
-        //To Do
-    }
-    /*
-     This Delegate will notify to current User If User will do Self UnMute Audio
-     */
-    func stream(_ stream: EnxStream?, didSelfUnmuteAudio data: [Any]?) {
-        //To Do
-    }
-    /*
-     This Delegate will notify to current User If any user has stoped There Video or current user Video
-     */
-    func didVideoEvents(_ data: [AnyHashable : Any]?) {
-        //To Do
-    }
-    /*
-     This Delegate will notify to current User If any user has stoped There Audio or current user Video
-     */
-    func didAudioEvents(_ data: [AnyHashable : Any]?) {
-        //To Do
-    }
-    
 }
