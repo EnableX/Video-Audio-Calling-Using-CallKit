@@ -102,7 +102,8 @@ class ConfrencePageViewController: UIViewController {
             }
         })
     }
-    @objc func endCallTriger()  {
+   func endCallTriger()  {
+        NotificationCenter.default.post(name: NSNotification.Name("endCallTriger"), object: nil)
         self.navigationController?.popViewController(animated: true)
     }
 }
@@ -168,9 +169,7 @@ extension ConfrencePageViewController : EnxRoomDelegate, EnxStreamDelegate {
      This Delegate will notify to User if Room Got discunnected
      */
     func roomDidDisconnected(_ status: EnxRoomStatus) {
-        NotificationCenter.default.post(name: NSNotification.Name("endCallTriger"), object: nil)
-        self.navigationController?.popViewController(animated: true)
-       // self.perform(#selector(endCallTriger), with: nil, afterDelay: 1.0)
+        endCallTriger();
     }
     /*
      This Delegate will notify to User if any person join room
@@ -182,7 +181,7 @@ extension ConfrencePageViewController : EnxRoomDelegate, EnxStreamDelegate {
      This Delegate will notify to User if any person got discunnected
      */
     func room(_ room: EnxRoom?, userDidDisconnected Data: [Any]?) {
-        self.navigationController?.popViewController(animated: true)
+        endCallTriger()
     }
     /*
      This Delegate will notify to User if any person got discunnected

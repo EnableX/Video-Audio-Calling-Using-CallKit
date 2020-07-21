@@ -37,9 +37,9 @@ class ViewController: UIViewController {
         }
     }
     @objc func endCalltriger(){
-        endCall()
         trigerCallBtn.setTitle("Call Triger", for: .normal)
         trigerCallBtn.setTitleColor(.black, for: .normal)
+        endCall()
     }
     @objc func startCallTriger(){
         self.performSegue(withIdentifier: "confrencePage", sender: nil)

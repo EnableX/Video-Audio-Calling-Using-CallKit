@@ -40,15 +40,55 @@ class EnxCallManager: NSObject {
             } else {
                 if(action == "startCall"){
                     // Handle Push Notification here and pass roomID through push notification to join the same room
+                    self.pushCalltoDevice(roomID: RoomId)
                 }
                 else if(action == "endCall"){
                     // Handle Push Notification for End Call here
+                    self.pushEndCallNotification()
                 }
                 print("Requested transaction \(action) successfully")
             }
         }
     }
-
+    
+    //Mark push message for Start call
+    fileprivate func pushCalltoDevice(roomID : String){
+        let bundleurl  = Bundle.main.url(forResource: "push", withExtension: "p12", subdirectory: "resource.bundle")// Please replace this with your certificate.
+        let data = NSData(contentsOf: bundleurl!)
+        do{
+            let pusher = try NWPusher.connect(withPKCS12Data: data as Data?, password: "Password for your certificate", environment: .sandbox)
+            let payload = "{\"aps\":{\"UUID\":\"\(UUID())\",\"handle\":\"start call\",\"roomId\":\"\(roomID)\"}}"
+            let token = "Reciver device Token"//Add device token who going to receive push
+                    do {
+                        try pusher.pushPayload(payload, token: token, identifier: UInt(arc4random()))
+                        
+                    } catch{
+                        print(error)
+                    }
+                }catch{
+                    print(error)
+                }
+            }
+            //Mark push message for End call
+            fileprivate func pushEndCallNotification(){
+                let bundleurl  = Bundle.main.url(forResource: "push", withExtension: "p12", subdirectory: "resource.bundle")// Please replace this with your certificate.
+                let data = NSData(contentsOf: bundleurl!)
+                do{
+                    let pusher = try NWPusher.connect(withPKCS12Data: data as Data?, password: "Password for your certificate", environment: .sandbox)
+                    
+                    let payload = "{\"aps\":{\"UUID\":\"\(UUID())\",\"handle\":\"end call\"}}"
+                    let token = "Reciver device Token" // Add device token who going to receive push
+            do {
+                try pusher.pushPayload(payload, token: token, identifier: UInt(arc4random()))
+               
+            } catch{
+                print(error)
+            }
+        }catch{
+            print(error)
+        }
+    }
+    
     //Mark : Call Managment
     static let callsChangedNotification = Notification.Name("CallsChangedNotification")
     private(set) var calls = [EnxCall]()
