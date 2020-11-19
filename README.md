@@ -27,7 +27,7 @@ Started](https://guides.cocoapods.org/using/getting-started.html#getting-started
 
 #### 2.1.1 App Id and App Key 
 
-* Register with EnableX [https://www.enablex.io] 
+* Register with EnableX [https://portal.enablex.io/cpaas/trial-sign-up/] 
 * Login to the EnableX Portal
 * Create your Application Key
 * Get your App ID and App Key delivered to your Email
