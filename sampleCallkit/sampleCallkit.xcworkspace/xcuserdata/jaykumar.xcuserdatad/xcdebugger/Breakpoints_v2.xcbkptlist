@@ -76,8 +76,8 @@
             filePath = "sampleCallkit/ConfrencePageViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "room(_:userDidDisconnected:)"
             landmarkType = "7">
          </BreakpointContent>

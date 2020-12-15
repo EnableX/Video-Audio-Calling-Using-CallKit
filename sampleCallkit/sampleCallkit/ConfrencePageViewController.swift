@@ -91,9 +91,10 @@ class ConfrencePageViewController: UIViewController {
         VCXServicesClass.featchToken(requestParam: inputParam, completion:{token  in
             DispatchQueue.main.async {
                 //  Success Response from server
-                    let videoSize : NSDictionary =  ["minWidth" : 720 , "minHeight" : 480 , "maxWidth" : 1280, "maxHeight" :720]
-                let roomInfo : [String : Any] = ["allow_reconnect" :true , "number_of_attempts" :  3 ,"timeout_interval" : 20,"activeviews" : "view"]
-                    let localStreamInfo : NSDictionary = ["video" : true ,"audio" : true  ,"data" :true ,"name" :"Jay","type" : "public","audio_only" : false ,"maxVideoBW" : 400 ,"minVideoBW" : 300 , "videoSize" : videoSize]
+                    let videoSize : NSDictionary =  ["minWidth" : 320 , "minHeight" : 180 , "maxWidth" : 1280, "maxHeight" :720]
+                let playerConfiguration : NSDictionary = ["avatar":true,"audiomute":true, "videomute":true,"bandwidht":true, "screenshot":true,"iconColor" :"#0000FF"]
+                let roomInfo : [String : Any] = ["allow_reconnect" :true , "number_of_attempts" :  3 ,"timeout_interval" : 20,"playerConfiguration":playerConfiguration,"activeviews" : "view"]
+                    let localStreamInfo : NSDictionary = ["video" : true ,"audio" : true  ,"data" :true ,"name" :"Jay","type" : "public","audio_only" : false ,"maxVideoBW" : 120 ,"minVideoBW" : 80 , "videoSize" : videoSize]
                 guard let steam = self.objectJoin.joinRoom(token, delegate: self, publishStreamInfo: (localStreamInfo as! [AnyHashable : Any]), roomInfo: roomInfo, advanceOptions: nil) else{
                         return
                     }
@@ -148,12 +149,6 @@ extension ConfrencePageViewController : EnxRoomDelegate, EnxStreamDelegate {
         room!.subscribe(stream!)
     }
     /*
-     This Delegate will notify to User if any new person Romove from room
-     */
-    func room(_ room: EnxRoom?, didRemovedStream stream: EnxStream?) {
-        //To Do
-    }
-    /*
      This Delegate will notify to User to subscribe other user stream
      */
     func room(_ room: EnxRoom?, didSubscribeStream stream: EnxStream?) {
@@ -168,7 +163,7 @@ extension ConfrencePageViewController : EnxRoomDelegate, EnxStreamDelegate {
     /*
      This Delegate will notify to User if Room Got discunnected
      */
-    func roomDidDisconnected(_ status: EnxRoomStatus) {
+    func didRoomDisconnect(_ response: [Any]?) {
         endCallTriger();
     }
     /*
@@ -220,30 +215,6 @@ extension ConfrencePageViewController : EnxRoomDelegate, EnxStreamDelegate {
     }
     
     //Mark- EnxStreamDelegate Delegate
-    /*
-     This Delegate will notify to current User If User will do Self Stop Video
-     */
-    func stream(_ stream: EnxStream?, didSelfMuteVideo data: [Any]?) {
-        //To Do
-    }
-    /*
-     This Delegate will notify to current User If User will do Self Start Video
-     */
-    func stream(_ stream: EnxStream?, didSelfUnmuteVideo data: [Any]?) {
-        //To Do
-    }
-    /*
-     This Delegate will notify to current User If User will do Self Mute Audio
-     */
-    func stream(_ stream: EnxStream?, didSelfMuteAudio data: [Any]?) {
-        //To Do
-    }
-    /*
-     This Delegate will notify to current User If User will do Self UnMute Audio
-     */
-    func stream(_ stream: EnxStream?, didSelfUnmuteAudio data: [Any]?) {
-        //To Do
-    }
     /*
      This Delegate will notify to current User If any user has stoped There Video or current user Video
      */
