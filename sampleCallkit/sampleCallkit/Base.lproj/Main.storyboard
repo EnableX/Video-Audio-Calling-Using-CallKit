@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yZN-Ai-Ggc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yZN-Ai-Ggc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WlI-k2-thx">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WlI-k2-thx">
                                 <rect key="frame" x="172" y="433" width="70" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="CwO-Es-T8r"/>
@@ -30,12 +30,12 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="WlI-k2-thx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aC0-DW-NqV"/>
                             <constraint firstItem="WlI-k2-thx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="suI-Rx-RZC"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="1I3-kd-LvL"/>
                     <connections>
@@ -143,7 +143,7 @@
                                             <constraint firstAttribute="bottom" secondItem="6bK-Z7-7Iz" secondAttribute="bottom" constant="10" id="sV5-vn-c0i"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mcm-XT-uIu">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mcm-XT-uIu">
                                         <rect key="frame" x="157.5" y="0.0" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="7QP-6F-3nw"/>
@@ -180,6 +180,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="ldp-jK-BWF"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ldp-jK-BWF" firstAttribute="trailing" secondItem="I0v-ci-yD7" secondAttribute="trailing" constant="19" id="OGA-Wg-2K5"/>
@@ -188,12 +189,12 @@
                             <constraint firstItem="ldp-jK-BWF" firstAttribute="trailing" secondItem="Xxt-s8-cQP" secondAttribute="trailing" constant="20" id="ifh-1x-CNc"/>
                             <constraint firstItem="Xxt-s8-cQP" firstAttribute="top" secondItem="ldp-jK-BWF" secondAttribute="top" constant="20" id="uw0-ep-Yh9"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="ldp-jK-BWF"/>
                     </view>
                     <navigationItem key="navigationItem" id="jWB-He-gOy"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="localPlayerView" destination="Xxt-s8-cQP" id="Srd-lS-GnD"/>
+                        <outlet property="speakerBTN" destination="mlL-me-bHN" id="jlc-vi-g4f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dsp-MW-WcU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

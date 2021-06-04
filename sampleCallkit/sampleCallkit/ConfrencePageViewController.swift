@@ -15,7 +15,7 @@ class ConfrencePageViewController: UIViewController {
     var objectJoin : EnxRtc!
     var localStream : EnxStream!
     @IBOutlet weak var localPlayerView: EnxPlayerView!
- 
+    @IBOutlet weak var speakerBTN : UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,10 +59,10 @@ class ConfrencePageViewController: UIViewController {
             return
         }
         if sender.isSelected {
-            remoteRoom.switchMediaDevice("Speaker")
+            remoteRoom.switchMediaDevice("EARPIECE")
         }
         else{
-           remoteRoom.switchMediaDevice("EARPIECE")
+           remoteRoom.switchMediaDevice("Speaker")
         }
         sender.isSelected = !sender.isSelected
     }
@@ -135,6 +135,8 @@ extension ConfrencePageViewController : EnxRoomDelegate, EnxStreamDelegate {
      */
     func room(_ room: EnxRoom?, didPublishStream stream: EnxStream?) {
         //To Do
+        emoteRoom.switchMediaDevice("Speaker")
+        speakerBTN.isSelected = true
     }
     /*
      This Delegate will notify to  User Once he Unpublisg Stream
