@@ -1,5 +1,5 @@
 PODS:
-  - EnxRTCiOS (1.9.6):
+  - EnxRTCiOS (2.0.0):
     - GoogleWebRTC (= 1.1.29400)
   - GoogleWebRTC (1.1.29400)
   - NWPusher (0.7.5)
@@ -10,7 +10,7 @@ PODS:
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
-  - EnxRTCiOS
+  - EnxRTCiOS (= 2.0.0)
   - NWPusher (~> 0.7.0)
   - ReachabilitySwift
   - Socket.IO-Client-Swift (~> 15.0.0)
@@ -27,7 +27,7 @@ SPEC REPOS:
     - SVProgressHUD
 
 SPEC CHECKSUMS:
-  EnxRTCiOS: 3960894755e833f6f6333d74365d0fe7c2363488
+  EnxRTCiOS: 7d9fd28ad7264c341b76b629eebb45f8cd9dab86
   GoogleWebRTC: cfb83bc346435a17fe06bb05f04ad826b858a7fb
   NWPusher: 9b29a44754d88cb02c28a1e9bc8750845506123e
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
@@ -35,6 +35,6 @@ SPEC CHECKSUMS:
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: a65ecf99a83db6460398661952c826c8d99c51a6
+PODFILE CHECKSUM: 7c07738865544b497c1db07cb680f9b36261a146
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2
