@@ -110,36 +110,36 @@ Once you tried EnableX iOS Sample Application, you may need to set up your own  
 ![home](./home.png)
 
 The iOS system boosts the call priority of the app. Then, the app starts publishing to EnableX platform. You will not notice any differences until you go to the home screen.
-- An incoming native phone call will not interrupt the current VoIP call, instead it shows the option menu.
+- An incoming native phone call will not interrupt the current VoIP call, instead, it shows the option menu.
 - App will show native incoming call UI to answer the call.
 
-**Incoming call unlocak Screen**
+**Incoming Call Unlock Screen**
 
 ![unlock](./unlock.png)
 
-**Incoming call lock Screen**
+**Incoming Call Lock Screen**
 
 ![lock](./lock.png)
 
-**Recive call lock Screen**
+**Receive Call Lock Screen**
 
 ![lock1](./lock1.png)
 
 
-**use a push server or [NWPusher](https://github.com/noodlewerk/NWPusher) to call**
+**Use a push server or [NWPusher](https://github.com/noodlewerk/NWPusher) to call**
 
 This requires a few more steps:
 
-- create your certificate
-- configure your push notification backend or NWPusher
-- locate your device token for testing (launch the app and get it from the console)
-- send a remote notification from your backend or NWPusher
+- Create your certificate
+- Configure your push notification backend or NWPusher
+- Locate your device token for testing (launch the app and get it from the console)
+- Send a remote notification from your backend or NWPusher
 
 
 ## Exploring the code
 **CXProvider**\
-CXProvider is an object which is responsible for report any out-of-band notifications to the system.
-To initialize the provider with the appropriate `CXProviderConfiguration` object, A provider configuration specifies the behavior and capabilities of the calls, To pass on the `CXProvider` initializer. In order to receive telephony events of the provider, the provider needs to specify an object conforming to the `CXProviderDelegate` protocol.
+CXProvider is an object which handles for report and out-of-band notifications to the system.
+To initialize the provider with the appropriate `CXProviderConfiguration` object, the provider configuration specifies the behavior and capabilities of the calls to pass on the `CXProvider` initializer. In order to receive telephony events of the provider, the provider needs to specify an object conforming to the `CXProviderDelegate` protocol.
 
 ```swift
 // create a provider 
@@ -154,7 +154,7 @@ provider = CXProvider(configuration: type(of: self).providerConfiguration)
 provider.setDelegate(self as? CXProviderDelegate, queue: nil)
 ```
 
-The `CXProviderDelegate` protocol defines events of the telephony provider (`CXProvider`) such as the call starting, the call being put on hold , end call and answer call.
+The `CXProviderDelegate` protocol defines events of the telephony provider (`CXProvider`) such as - the call starting / the call being put on hold / end call / answer call.
 
 ```swift
 // MARK: Provider Delegates
@@ -207,11 +207,11 @@ de-activated after having its priority restored to normal.
 ```
 
 **CXCallController** \
-`CXCallController` is responsible to inform the system of user-initiated requests, such as a start call action. This is the key difference between the `CXProvider` and the `CXCallController`. The provider reports to the system whereas the call controller makes requests from the system on behalf of the user.
+`CXCallController` is responsible to inform the system about user-initiated requests, such as a start call action. This is the key difference between the `CXProvider` and the `CXCallController`. The provider reports to the system whereas the call controller makes requests from the system on behalf of the user.
 
-The call controller uses `CXTransaction` object  to request a telephony action (which will later trigger delegate methods above if succeed).Each telephony action has a corresponding `CXAction` class such as `CXEndCallAction` for ending a call, `CXSetHeldCallAction` for setting a call on hold.
+The call controller uses `CXTransaction` object  to request a telephony action (which will later trigger delegate methods as explained above, if succeeded). Each telephony action has a corresponding `CXAction` class such as `CXEndCallAction` for ending a call, `CXSetHeldCallAction` for setting a call on hold.
 
-Once you have it all ready, invoke the `request(_:completion:)` by passing a ready transaction object. Here's how you start a call:
+Once you have these ready, invoke the `request(_:completion:)` by passing a ready transaction object. Here's how you start a call:
 
 ```swift
 // create a CXAction
@@ -236,7 +236,7 @@ print("Requested transaction \(action) successfully")
 
 ```
 
-As for answering a call, the `CallKit` framework provides a convenient API to present a native call UI. By invoking `reportNewIncomingCall(with:update:completion:)` on the provider, you will have the same experience as receiving a native phone call. Often, this piece of code works with VoIP remote notification to make calls to a device/person same like native call UI experience.
+As for answering a call, the `CallKit` framework provides a convenient API to present a native call UI. By invoking `reportNewIncomingCall(with:update:completion:)` on the provider, you will have the same as experience as receiving a native phone call. Often, this piece of code works with VoIP remote notification to make calls to a device/person same like native call UI experience.
 
 ```swift
 // Construct a CXCallUpdate describing the incoming call, including the caller.
@@ -252,7 +252,7 @@ since calls may be "denied" for various legitimate reasons. See CXErrorCodeIncom
 }
 ```
 
-## Trial
+## 5. Trial
 
 Sign up for a free trial https://portal.enablex.io/cpaas/trial-sign-up/ or try our multiparty video chat https://try.enablex.io/
 
