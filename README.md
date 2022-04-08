@@ -136,7 +136,7 @@ This requires a few more steps:
 - Send a remote notification from your backend or NWPusher
 
 
-## Exploring the code
+## 5. Exploring the code
 **CXProvider**\
 CXProvider is an object which handles for report and out-of-band notifications to the system.
 To initialize the provider with the appropriate `CXProviderConfiguration` object, the provider configuration specifies the behavior and capabilities of the calls to pass on the `CXProvider` initializer. In order to receive telephony events of the provider, the provider needs to specify an object conforming to the `CXProviderDelegate` protocol.
@@ -252,7 +252,7 @@ since calls may be "denied" for various legitimate reasons. See CXErrorCodeIncom
 }
 ```
 
-## 5. Trial
+## 6. Trial
 
 Sign up for a free trial https://portal.enablex.io/cpaas/trial-sign-up/ or try our multiparty video chat https://try.enablex.io/
 
