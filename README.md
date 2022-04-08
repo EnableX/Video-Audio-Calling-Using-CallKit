@@ -2,7 +2,7 @@
 
 # A Sample iOS App with EnableX iOS Toolkit and Callkit 
 
-This iOS Sample App, demonstrates how to integrate the [CallKit](https://developer.apple.com/documentation/callkit) 
+This iOS Sample App demonstrates how to integrate the [CallKit](https://developer.apple.com/documentation/callkit) 
 with [EnableX](https://www.enablex.io) platform using iOS Toolkit.
 
 ### Note: To try out this code, you’ll need an iPhone with iOS 12.0 or higher
@@ -10,9 +10,9 @@ with [EnableX](https://www.enablex.io) platform using iOS Toolkit.
 
 ### What is CallKit?
 CallKit is a framework that aims to improve the VoIP experience by allowing applications to integrate with the native phone UI. 
-By adopting CallKit, your app will be able to Use the native incoming call screen in both the locked and unlocked states.
+By adopting CallKit, your app will be able to use the native incoming call screen in both the locked and unlocked states.
 
-## Installation and pre-requisites:
+## Installation and Prerequisites:
 
 ### Use CocoaPods to install the project files and dependencies.
 
@@ -23,24 +23,24 @@ Started](https://guides.cocoapods.org/using/getting-started.html#getting-started
 
 ## 2. How to get started
 
-### 2.1 Pre-Requisites
+### 2.1 Prerequisites
 
 #### 2.1.1 App Id and App Key 
 
 * Register with EnableX [https://portal.enablex.io/cpaas/trial-sign-up/] 
 * Login to the EnableX Portal
-* Create your Application Key
-* Get your App ID and App Key delivered to your Email
+* Create your Application
+* Get your App ID and App Key delivered to your email
 
 #### 2.1.2 Test Application Server
 
-You need to setup an Application Server to provision Web Service API for your iOS Application to communicate enabling Video Session. 
+You need to set up an Application Server to provision Web Service API for your iOS Application to enable Video Session. 
 
-To help you to try our iOS Application quickly, without having to setup Applciation Server, the Application is shipped pre-configured with EnableX hosted Application Server i.e. https://demo.enablex.io. 
+To help you to try our iOS Application quickly, without having to set up Application Server, the Application is shipped pre-configured with EnableX hosted Application Server i.e. https://demo.enablex.io. 
 
-Our Application Server restricts a single Session Duation to 10 minutes, and allows 1 moderator and not more than 3 Participant in a Session.
+Our Application Server restricts a single Session Durations to 10 minutes, and allows 1 moderator and not more than 3 participants in a Session.
 
-Once you tried EnableX iOS Sample Application, you may need to setup your own  Application Server and verify your Application to work with your Application Server.  More on this, read Point 2 later in the Document.
+Once you tried EnableX iOS Sample Application, you may need to set up your own  Application Server and verify your Application to work with your Application Server.  Refer to point 3 for more details on this.
 
 
 #### 2.1.3 Configure iOS Client 
@@ -71,41 +71,41 @@ Once you tried EnableX iOS Sample Application, you may need to setup your own  A
 
  * Open the App in your Device. 
  * You need to create a Room by clicking the "Call Triger" button.
- * Once the Room Id is created, you app will be automatically create "token" and join the join. Same time you can send push notification with same room_id for other end user to join in same room.
- * Once other end user has receive the push notificatio, he/she will parse metadate and get room_Id to join same room. 
+ * Once the Room Id is created, your app will automatically create the "token" and join the room. Same time you can send push notification with the same room_id for other end user to join the same room.
+ * Once the other end user has received the push notification, he/she will parse metadata and get room_Id to join the same room. 
 
- Note: Only one user with Moderator Role allowed to connect to a Virtual Room while trying with EnableX Hosted Service. Your Own Application Server may allow upto 5 Moderators. 
+ Note: Only one user with the Moderator Role is allowed to connect to a Virtual Room while trying with EnableX Hosted Service. Your Own Application Server can allow upto 5 Moderators. 
  
- Note:- If you used any emulator/simulator your local stream will not create. It will create only on real device.
+ Note: In case of emulator/simulator your local stream will not create. It will create only on real device.
  
- ## 3 Setup Your Own Application Server
+ ## 3. Set up Your Own Application Server
 
- You may need to setup your own Application Server after you tried the Sample Application with EnableX hosted Server. We have differnt variant of Appliciation Server Sample Code, pick one in your preferred language and follow instructions given in respective README.md file.
+ You need to set up your own Application Server after you tried the Sample Application with EnableX hosted Server. We have different variants of Application Server Sample Code. Pick the one in your preferred language and follow instructions given in respective README.md file.
 
- *NodeJS: [https://github.com/EnableX/Video-Conferencing-Open-Source-Web-Application-Sample.git]
+ *NodeJS: [https://github.com/EnableX/Video-Conferencing-Open-Source-Web-Application-Sample.git] <br/>
  *PHP: [https://github.com/EnableX/Group-Video-Call-Conferencing-Sample-Application-in-PHP]
 
  Note the following:
 
  * You need to use App ID and App Key to run this Service.
- * Your iOS Client End Point needs to connect to this Service to create Virtual Room and Create Token to join session.
- * Application Server is created using EnableX Server API, a Rest API Service helps in provisioning, session access and pos-session reporting.  
+ * Your iOS Client EndPoint needs to connect to this Service to create Virtual Room and Create Token to join the session.
+ * Application Server is created using EnableX Server API while a Rest API Service helps in provisioning, session access and post-session reporting.  
 
  To know more about Server API, go to:
- https://developer.enablex.io/latest/server-api/
+ https://www.enablex.io/developer/video-api/server-api
  
- ## 3.1 iOS Toolkit
+ ### 3.1 iOS Toolkit
 
- This Sample Applcation uses EnableX iOS Toolkit to communicate with EnableX Servers to initiate and manage Real Time Communications. You might need to update your Application with latest version of EnableX iOS Toolkit time as and when a new release is avaialble.  
+ This Sample Application uses EnableX iOS Toolkit to communicate with EnableX Servers to initiate and manage Real-Time Communications. Please update your Application with latest version of EnableX Android Toolkit as and when a new release is available.
 
- * Documentation: https://developer.enablex.io/latest/client-api/ios-toolkit/
- * Download: https://developer.enablex.io/resources/downloads/#ios-toolkit
+ * Documentation: https://www.enablex.io/developer/video-api/client-api/ios-toolkit/
+ * Download: https://www.enablex.io/developer/video-api/client-api/ios-toolkit/
 
-4. Use Xcode to build and run the app on an iOS device.
+### 3.2 Use Xcode to build and run the app on an iOS device.
 
-### Exploring the sample app
+## 4. Exploring the sample app
 
-5 **Call Triger**: 
+**Call Triger**: 
 
 ![home](./home.png)
 
