@@ -96,7 +96,7 @@ Once you tried EnableX iOS Sample Application, you may need to set up your own  
  
  ### 3.1 iOS Toolkit
 
- This Sample Application uses EnableX iOS Toolkit to communicate with EnableX Servers to initiate and manage Real-Time Communications. Please update your Application with latest version of EnableX Android Toolkit as and when a new release is available.
+ This Sample Application uses EnableX iOS Toolkit to communicate with EnableX Servers to initiate and manage Real-Time Communications. Please update your Application with latest version of EnableX IOS Toolkit as and when a new release is available.
 
  * Documentation: https://www.enablex.io/developer/video-api/client-api/ios-toolkit/
  * Download: https://www.enablex.io/developer/video-api/client-api/ios-toolkit/
