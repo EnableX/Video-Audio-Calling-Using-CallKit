@@ -6,8 +6,8 @@ target 'sampleCallkit' do
   use_frameworks!
 
   # Pods for sampleCallkit
-  pod 'EnxRTCiOS'
-   pod 'Socket.IO-Client-Swift', '~> 15.0.0'
+  pod 'EnxRTCiOS', '2.3.14'
+   pod 'Socket.IO-Client-Swift', '~> 15.2.0'
   pod 'NWPusher', '~> 0.7.0'
   pod 'ReachabilitySwift'
   pod 'SVProgressHUD'
@@ -21,5 +21,15 @@ target 'sampleCallkit' do
     inherit! :search_paths
     # Pods for testing
   end
+  
+post_install do |installer|
+        installer.generated_projects.each do |project|
+              project.targets.each do |target|
+                  target.build_configurations.each do |config|
+                      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+                   end
+              end
+       end
+    end
 
 end

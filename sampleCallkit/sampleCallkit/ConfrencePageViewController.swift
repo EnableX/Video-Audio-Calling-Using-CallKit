@@ -135,7 +135,7 @@ extension ConfrencePageViewController : EnxRoomDelegate, EnxStreamDelegate {
      */
     func room(_ room: EnxRoom?, didPublishStream stream: EnxStream?) {
         //To Do
-        emoteRoom.switchMediaDevice("Speaker")
+        remoteRoom.switchMediaDevice("Speaker")
         speakerBTN.isSelected = true
     }
     /*
