@@ -1,9 +1,16 @@
+# Integrating CallKit with EnableX Platform: An iOS Sample App
 
+This iOS Sample App is an exemplary guide for iOS developers aiming to integrate EnableX’s robust video and audio capabilities with CallKit framework using iOS Toolkit. This sample app is developed for devices with iOS 12.0 or above and brings the following features:
 
-# A Sample iOS App with EnableX iOS Toolkit and Callkit 
+Native Phone UI Integration: Utilize the native incoming call screen in both locked and unlocked states.
+Pre-configured Test Environment: The sample app comes with a pre-configured EnableX hosted server allowing quick testing.
+Enhanced Call Control: Features like call muting, call holding, and many others are readily accessible.
+Note: To try out this code, you’ll need an iPhone with iOS 12.0 or higher
 
-This iOS Sample App demonstrates how to integrate the [CallKit](https://developer.apple.com/documentation/callkit) 
-with [EnableX](https://www.enablex.io) platform using iOS Toolkit.
+*Note: CallKit is not supported in Simulator
+
+What is CallKit?
+CallKit is a framework that aims to improve the VoIP experience by allowing applications to integrate with the native phone UI. By adopting CallKit, your app will be able to use the native incoming call screen in both the locked and unlocked states.
 
 ### Note: To try out this code, you’ll need an iPhone with iOS 12.0 or higher
 **Note: CallKit is not supported in Simulator* 
