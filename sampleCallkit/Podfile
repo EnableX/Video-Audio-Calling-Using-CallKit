@@ -6,7 +6,7 @@ target 'sampleCallkit' do
   use_frameworks!
 
   # Pods for sampleCallkit
-  pod 'EnxRTCiOS', '2.3.14'
+  pod 'EnxRTCiOS', '2.3.16'
    pod 'Socket.IO-Client-Swift', '~> 15.2.0'
   pod 'NWPusher', '~> 0.7.0'
   pod 'ReachabilitySwift'
