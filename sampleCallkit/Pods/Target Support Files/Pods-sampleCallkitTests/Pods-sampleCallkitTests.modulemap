@@ -1,6 +1,0 @@
-framework module Pods_sampleCallkitTests {
-  umbrella header "Pods-sampleCallkitTests-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,19 +1,21 @@
 PODS:
   - EnablexWebRTC (1.0.2)
-  - EnxRTCiOS (2.3.14):
+  - EnxRTCiOS (3.0.4):
     - EnablexWebRTC (= 1.0.2)
   - NWPusher (0.7.5)
-  - ReachabilitySwift (5.0.0)
-  - Socket.IO-Client-Swift (15.2.0):
-    - Starscream (~> 3.1)
-  - Starscream (3.1.1)
-  - SVProgressHUD (2.2.5)
+  - ReachabilitySwift (5.2.3)
+  - Socket.IO-Client-Swift (16.1.0):
+    - Starscream (~> 4.0.6)
+  - Starscream (4.0.8)
+  - SVProgressHUD (2.3.1):
+    - SVProgressHUD/Core (= 2.3.1)
+  - SVProgressHUD/Core (2.3.1)
 
 DEPENDENCIES:
-  - EnxRTCiOS (= 2.3.14)
+  - EnxRTCiOS
   - NWPusher (~> 0.7.0)
   - ReachabilitySwift
-  - Socket.IO-Client-Swift (~> 15.2.0)
+  - Socket.IO-Client-Swift (~> 16.1.0)
   - SVProgressHUD
 
 SPEC REPOS:
@@ -28,13 +30,13 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   EnablexWebRTC: 05f0d79eb6f133f1b844af9a2b7530dc7c6e2108
-  EnxRTCiOS: 61de854eba2b12e747e363c3018a2e622fc453e3
+  EnxRTCiOS: bd9386bb5865d2934ada99064b2a957233296e55
   NWPusher: 9b29a44754d88cb02c28a1e9bc8750845506123e
-  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
-  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
-  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  ReachabilitySwift: 7f151ff156cea1481a8411701195ac6a984f4979
+  Socket.IO-Client-Swift: ee4b8f80a3db18dd7f32b266ddf273310609443c
+  Starscream: 19b5533ddb925208db698f0ac508a100b884a1b9
+  SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
 
-PODFILE CHECKSUM: 88160d71aa0cf41928f7a2d40d663565839b9bc3
+PODFILE CHECKSUM: 365c6cd1929f128ee56a18ca6d6a22492fd3b275
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.15.2

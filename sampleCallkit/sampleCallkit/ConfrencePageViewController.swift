@@ -52,7 +52,7 @@ class ConfrencePageViewController: UIViewController {
         sender.isSelected = !sender.isSelected
     }
     @IBAction func changeCameraAngle(_ sender: UIButton) {
-           localStream.switchCamera()
+          _ = localStream.switchCamera()
     }
     @IBAction func speakerOnOffEvent(_ sender: UIButton) {
         guard remoteRoom != nil else {
@@ -91,11 +91,11 @@ class ConfrencePageViewController: UIViewController {
         VCXServicesClass.featchToken(requestParam: inputParam, completion:{token  in
             DispatchQueue.main.async {
                 //  Success Response from server
-                    let videoSize : NSDictionary =  ["minWidth" : 320 , "minHeight" : 180 , "maxWidth" : 1280, "maxHeight" :720]
-                let playerConfiguration : NSDictionary = ["avatar":true,"audiomute":true, "videomute":true,"bandwidht":true, "screenshot":true,"iconColor" :"#0000FF"]
+                let videoSize : [String : Any] =  ["minWidth" : 320 , "minHeight" : 180 , "maxWidth" : 1280, "maxHeight" :720]
+                let playerConfiguration : [String : Any] = ["avatar":true,"audiomute":true, "videomute":true,"bandwidht":true, "screenshot":true,"iconColor" :"#0000FF"]
                 let roomInfo : [String : Any] = ["allow_reconnect" :true , "number_of_attempts" :  3 ,"timeout_interval" : 20,"playerConfiguration":playerConfiguration,"activeviews" : "view"]
-                    let localStreamInfo : NSDictionary = ["video" : true ,"audio" : true  ,"data" :true ,"name" :"Jay","type" : "public","audio_only" : false ,"maxVideoBW" : 120 ,"minVideoBW" : 80 , "videoSize" : videoSize]
-                guard let steam = self.objectJoin.joinRoom(token, delegate: self, publishStreamInfo: (localStreamInfo as! [AnyHashable : Any]), roomInfo: roomInfo, advanceOptions: nil) else{
+                    let localStreamInfo : [String : Any] = ["video" : true ,"audio" : true  ,"data" :true ,"name" :"Jay","type" : "public","audio_only" : false ,"maxVideoBW" : 120 ,"minVideoBW" : 80 , "videoSize" : videoSize]
+                guard let steam = self.objectJoin.joinRoom(token, delegate: self, publishStreamInfo: localStreamInfo , roomInfo: roomInfo, advanceOptions: nil) else{
                         return
                     }
                     self.localStream = steam
@@ -117,10 +117,7 @@ extension ConfrencePageViewController : EnxRoomDelegate, EnxStreamDelegate {
     /*
      This Delegate will notify to User Once he got succes full join Room
      */
-    func room(_ room: EnxRoom?, didConnect roomMetadata: [AnyHashable : Any]?) {
-//        hasConnected = true
-//        startCallCompletion?(true)
-//        answCallCompletion?(true)
+    func room(_ room: EnxRoom?, didConnect roomMetadata: [String : Any]?) {
         remoteRoom = room
         remoteRoom.publish(localStream)
         localStream.attachRenderer(localPlayerView)
@@ -148,7 +145,7 @@ extension ConfrencePageViewController : EnxRoomDelegate, EnxStreamDelegate {
      This Delegate will notify to User if any new person added to room
      */
     func room(_ room: EnxRoom?, didAddedStream stream: EnxStream?) {
-        room!.subscribe(stream!)
+        _ = room!.subscribe(stream!)
     }
     /*
      This Delegate will notify to User to subscribe other user stream
@@ -183,19 +180,13 @@ extension ConfrencePageViewController : EnxRoomDelegate, EnxStreamDelegate {
     /*
      This Delegate will notify to User if any person got discunnected
      */
-    func room(_ room: EnxRoom?, didChange status: EnxRoomStatus) {
-        //To Do
-    }
-    /*
-     This Delegate will notify to User once any stream got publish
-     */
-    func room(_ room: EnxRoom?, didReceiveData data: [AnyHashable : Any]?, from stream: EnxStream?) {
+    func room(_ room: EnxRoom?, didChangeStatus status: EnxRoomStatus) {
         //To Do
     }
     /*
      This Delegate will notify to User to get updated attributes of particular Stream
      */
-    func room(_ room: EnxRoom?, didUpdateAttributesOf stream: EnxStream?) {
+    func room(_ room: EnxRoom?, didUpdateAttributesOfStream stream: EnxStream?) {
         //To Do
     }
     /*
@@ -220,13 +211,13 @@ extension ConfrencePageViewController : EnxRoomDelegate, EnxStreamDelegate {
     /*
      This Delegate will notify to current User If any user has stoped There Video or current user Video
      */
-    func didVideoEvents(_ data: [AnyHashable : Any]?) {
+    func didVideoEvents(_ data: [String : Any]?) {
         //To Do
     }
     /*
      This Delegate will notify to current User If any user has stoped There Audio or current user Video
      */
-    func didAudioEvents(_ data: [AnyHashable : Any]?) {
+    func didAudioEvents(_ data: [String : Any]?) {
         //To Do
     }
     
