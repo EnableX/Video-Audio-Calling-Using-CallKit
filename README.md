@@ -99,14 +99,14 @@ Once you tried EnableX iOS Sample Application, you may need to set up your own  
  * Application Server is created using EnableX Server API while a Rest API Service helps in provisioning, session access and post-session reporting.  
 
  To know more about Server API, go to:
- https://www.enablex.io/developer/video-api/server-api
+ https://developer.enablex.io/docs/references/apis/video-api/index/
  
  ### 3.1 iOS Toolkit
 
  This Sample Application uses EnableX iOS Toolkit to communicate with EnableX Servers to initiate and manage Real-Time Communications. Please update your Application with latest version of EnableX IOS Toolkit as and when a new release is available.
 
- * Documentation: https://www.enablex.io/developer/video-api/client-api/ios-toolkit/
- * Download: https://www.enablex.io/developer/video-api/client-api/ios-toolkit/
+ * Documentation: https://developer.enablex.io/docs/references/sdks/video-sdk/ios-sdk/index
+ * Download: https://developer.enablex.io/docs/references/sdks/video-sdk/ios-sdk/index
 
 ### 3.2 Use Xcode to build and run the app on an iOS device.
 
