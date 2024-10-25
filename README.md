@@ -34,7 +34,7 @@ Started](https://guides.cocoapods.org/using/getting-started.html#getting-started
 
 #### 2.1.1 App Id and App Key 
 
-* Register with EnableX [https://portal.enablex.io/cpaas/trial-sign-up/] 
+* Register with EnableX [https://www.enablex.io/free-trial/] 
 * Login to the EnableX Portal
 * Create your Application
 * Get your App ID and App Key delivered to your email
@@ -99,7 +99,7 @@ Once you tried EnableX iOS Sample Application, you may need to set up your own  
  * Application Server is created using EnableX Server API while a Rest API Service helps in provisioning, session access and post-session reporting.  
 
  To know more about Server API, go to:
- https://developer.enablex.io/docs/references/apis/video-api/index/
+ https://developer.enablex.io/docs/guides/video-guide/sample-codes/video-calling-app/#demo-application-server
  
  ### 3.1 iOS Toolkit
 
@@ -261,5 +261,5 @@ since calls may be "denied" for various legitimate reasons. See CXErrorCodeIncom
 
 ## 6. Trial
 
-Sign up for a free trial https://portal.enablex.io/cpaas/trial-sign-up/ or try our multiparty video chat https://try.enablex.io/
+Sign up for a free trial https://www.enablex.io/free-trial/ or try our multiparty video chat https://try.enablex.io/
 
